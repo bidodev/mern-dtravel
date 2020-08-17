@@ -7,8 +7,8 @@ import About from "./about/about.component";
 import Quiz from "./quiz/Quiz.component";
 
 //Sign In / Sign UP Page...
-import Authentication from "../../pages/authentication";
-import Favorites from '../../pages/favorites'
+import Authentication from "../../pages/authentication/authentication";
+import Favorites from '../../pages/favorites/favorites'
 
 // About Intro Component
 // Intro is one of the main component along aside.

@@ -1,7 +1,7 @@
 import React from 'react'
 import './favorites.styles.scss'
 
-import ExperienceItem from "../components/aside/discover/experiences/experience.item.component";
+import ExperienceItem from "../../components/aside/discover/experiences/experience.item.component";
 
 import { useSelector } from "react-redux";
 

@@ -14,11 +14,7 @@ const errorHandler = require('./controllers/errorController');
 //load our routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const placesRouter = require('./routes/places');
-
-
-// ADD THIS
-
+const dataRouter = require('./routes/data');
 
 //morgan logger
 if (process.env.NODE_ENV === 'development') {
@@ -32,7 +28,7 @@ app.use(cookieParser());
 //routers handler
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/places', placesRouter);
+app.use('/api/v1/data', dataRouter);
 
 //handling operational errors
 app.all('*', (req, res, next) => {

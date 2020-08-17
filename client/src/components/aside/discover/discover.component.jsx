@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useSelector } from "react-redux";
 import "./discover.component.styles.scss";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import handleOfferSearch from "../../../helpers/filter.offers";
 import ShowModal from "../../modal/offer.component";
 import ExperienceItem from "./experiences/experience.item.component";
 
@@ -18,7 +18,6 @@ const Discover = () => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState({});
-  const [lastIndex, setLastIndex] = useState(2);
 
   /**
    * 1. This function set the status of the Modal to Open.
@@ -40,52 +39,52 @@ const Discover = () => {
     setIsOpen(false);
   };
 
-  const HandleNav = (current) => {
-    const filteredSearch = (switchData) => {
-      const newSearch = handleOfferSearch(searchInput, switchData);
+  // const HandleNav = (current) => {
+  //   const filteredSearch = (switchData) => {
+  //     const newSearch = handleOfferSearch(searchInput, switchData);
 
-      // Shuffle array
-      const shuffled = newSearch.sort(() => 0.5 - Math.random());
+  //     // Shuffle array
+  //     const shuffled = newSearch.sort(() => 0.5 - Math.random());
 
-      // Get sub-array of first n elements after shuffled
-      return shuffled.slice(0, 2);
-    };
-    switch (item) {
-      case "experiences":
-        return filteredSearch(fullData.experiences)
-          .filter((item, index) => index < lastIndex)
-          .map(({ ...item }) => (
-            <ExperienceItem
-              key={item.id}
-              {...item}
-              openModal={openModal}
-              typeref={"experiences"}
-            />
-          ));
-      case "places":
-        return filteredSearch(fullData.destinations)
-          .filter((item, index) => index < lastIndex)
-          .map(({ ...item }) => (
-            <ExperienceItem
-              key={item.id}
-              {...item}
-              openModal={openModal}
-              typeref={"places"}
-            />
-          ));
-      case "housings":
-        return filteredSearch(fullData.housings).map(({ ...item }) => (
-          <ExperienceItem
-            key={item.id}
-            {...item}
-            openModal={openModal}
-            typeref={"housings"}
-          />
-        ));
-      default:
-        return false;
-    }
-  };
+  //     // Get sub-array of first n elements after shuffled
+  //     return shuffled.slice(0, 2);
+  //   };
+  //   switch (item) {
+  //     case "experiences":
+  //       return filteredSearch(fullData.experiences)
+  //         .filter((item, index) => index < lastIndex)
+  //         .map(({ ...item }) => (
+  //           <ExperienceItem
+  //             key={item.id}
+  //             {...item}
+  //             openModal={openModal}
+  //             typeref={"experiences"}
+  //           />
+  //         ));
+  //     case "places":
+  //       return filteredSearch(fullData.destinations)
+  //         .filter((item, index) => index < lastIndex)
+  //         .map(({ ...item }) => (
+  //           <ExperienceItem
+  //             key={item.id}
+  //             {...item}
+  //             openModal={openModal}
+  //             typeref={"places"}
+  //           />
+  //         ));
+  //     case "housings":
+  //       return filteredSearch(fullData.housings).map(({ ...item }) => (
+  //         <ExperienceItem
+  //           key={item.id}
+  //           {...item}
+  //           openModal={openModal}
+  //           typeref={"housings"}
+  //         />
+  //       ));
+  //     default:
+  //       return false;
+  //   }
+  // };
 
   return (
     <div className="aside-main">
@@ -106,9 +105,18 @@ const Discover = () => {
       />
 
       <div className="aside-main__carrousel">
-        <HandleNav />
+        {[].map((item) => {
+          return (<ExperienceItem
+            key={item.id}
+            {...item}
+            openModal={openModal}
+            typeref={"housings"}
+          />);
+        })}
       </div>
-      <div className="show-all"><Link to="offers">Show All Offers</Link></div>
+      <div className="show-all">
+        <Link to="offers">Show All Offers</Link>
+      </div>
     </div>
   );
 };

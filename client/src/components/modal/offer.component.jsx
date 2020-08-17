@@ -4,6 +4,7 @@ import "./offer.component.styles.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Carousel } from "react-responsive-carousel";
+import definePrice from '../../helpers/filterPrices'
 
 Modal.setAppElement("#root");
 const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
@@ -11,10 +12,10 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
     id,
     productName,
     cover,
-    extraImgs,
+    imgs,
     description,
     country,
-    prices,
+    price,
     type,
     typeref,
   } = data;
@@ -86,8 +87,8 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
         </div>
 
         <Carousel {...modalConfig}>
-          {extraImgs
-            ? [cover, ...extraImgs].map(({ url, description }) => (
+          {imgs
+            ? [cover, ...imgs].map(({ url, description }) => (
                 <div key={Math.ceil(Math.random())}>
                   <img src={`./img/${type}/${url}`} alt={description} />
                   <p className="legend">{description}</p>
@@ -103,7 +104,7 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
           </li>
           <li>
             <ion-icon name="cash-outline"></ion-icon>
-            {sanitizeNames(prices)}
+            {sanitizeNames(definePrice(price))}
           </li>
         </div>
         <p className="description">{description}</p>

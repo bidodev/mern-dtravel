@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import axios from 'axios';
-
-import Intro from "./components/intro/intro.component";
-import Aside from "./components/aside/aside.component";
+import Landing from './pages/home/landing';
 
 //import userDispatch to dispatch actions to our react-reduces
 import { useDispatch } from "react-redux";
@@ -14,17 +11,6 @@ const App = () => {
 
   //Use dispatch, similar to connect when not using Hooks
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    axios("http://localhost:8000/api/v1/places").then((res) => {
-      console.log(res)
-      // dispatch({
-      //   type: "UPDATE_DATA",
-      //   payload: data,
-      // });
-    })
-    .catch(err => console.log(err))
-  }, []);
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
@@ -59,8 +45,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Intro />
-      <Aside />
+     <Landing />
     </div>
   );
 };
