@@ -1,0 +1,16 @@
+.about-wrapper{
+    height: 95vh;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.page__under-img{
+    margin-top: 2rem;
+    width: 50%;
+    height: 50%;
+}

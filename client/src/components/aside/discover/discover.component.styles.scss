@@ -1,0 +1,85 @@
+.aside {
+  /* grid */
+  /* .aside is fixed for main-about-quiz, but not for Offers */
+  grid-row: 1;
+  grid-column: 2 /3;
+  /*  */
+  padding: 0 2vh;
+  background-color: #fff;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 95vh;
+  //border: 1px solid red;
+
+
+  .aside-main {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    //border: 1px solid red;
+    margin-left: 1vw;
+
+    nav {
+      font-size: 1.18rem;
+      display: flex;
+      width: 19rem;
+      justify-content: space-between;
+      letter-spacing: 0.4px;
+      font-weight: 400;
+
+      button {
+        color: #909090;
+
+        &:hover{
+          color: #f75d37
+        }
+
+      }
+    
+    }
+
+    h2 {
+      letter-spacing: 0.4px;
+      font-size: 2.5rem;
+      color: #303030;
+    }
+
+    &__carrousel {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: space-around;
+      //border: 1px solid red;
+      overflow: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .show-all {
+      text-align: right;
+      width: 98%;
+      color: #909090;
+      
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    .pagination {
+      //border: 1px solid red;
+      width: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ion-icon {
+        font-size: 1.1vw;
+        --ionicon-stroke-width: 20px;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

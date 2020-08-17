@@ -1,0 +1,17 @@
+.authentication {
+  /* position */
+  display: flex;
+  height: 95vh;
+  justify-content: space-around;
+  padding-top: 20vh;
+  align-items: flex-start;
+  background-color: #fefefe;
+  background-size: cover;
+  background-position: center;
+  color: #181818;
+  font-weight: 800;
+
+  // border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}

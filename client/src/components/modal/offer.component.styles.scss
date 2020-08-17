@@ -1,0 +1,150 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+}
+
+@keyframes modalFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.Modal {
+  position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: hidden;
+    border-radius: 30px;
+    outline: none;
+    padding: 20px;
+    width: 63vw;
+    margin-left: 2rem;
+    animation-name: modalFade;
+    animation-duration: 3s;
+}
+
+.offers-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+
+  &-title{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+      span {
+        text-align:center;
+        width: 100%;
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #f75d37;
+        font-weight: bold;
+        margin-left: 10rem;
+      }
+    
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 10rem;
+
+      ion-icon {
+        font-size: 2rem;
+        &:hover {
+          opacity: 0.5;
+          color: #ff0000;
+        }
+      }
+      ion-icon:first-child {
+        color: #f75d37;
+      }
+    }
+  }
+
+
+  .carousel {
+    .slide {
+      .legend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      div {
+        height: 45vh;
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  ul {
+    text-align: center;
+  }
+
+  .thumb {
+    height: 13vh;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.exp-infos {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    width: auto;
+    font-size: 1.3rem;
+
+    ion-icon {
+      font-size: 2rem;
+      color: #f75d37;
+      margin-right: 0.8rem;
+    }
+  }
+}
+
+.description {
+  text-align: justify;
+  padding: 1rem;
+  color: #303030;
+}
+
+// .gallery-container {
+//   height: 15vh;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+// }

@@ -1,0 +1,45 @@
+.aside-header {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  &__nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    list-style: none;
+    //border: 1px solid red;
+    font-family: "Nunito", sans-serif;
+
+    a {
+      letter-spacing: 0.5px;
+      color: #303030;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .option-logged{
+      cursor: pointer;
+    }
+
+    .active {
+      //text-decoration: underline;
+      font-weight: bold;
+      color: #f75d37;
+    }
+
+    .account-img {
+      width: 36px;
+      height: 36px;
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+}
