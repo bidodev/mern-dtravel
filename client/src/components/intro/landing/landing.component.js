@@ -9,25 +9,7 @@ import "./landing.title.styles.scss";
 import { Carousel } from "react-responsive-carousel";
 
 const Landing = () => {
-  const [backgrounds, setBackgrounds] = useState([]);
-  //const localBackgrounds = useSelector((state) => state.data.backgrounds);
-
-  //should improve this code, everytime the user refresh the page it call our API.
-  //const dispatch = useDispatch();
-
-  useEffect(() => {
-    try {
-      axios("http://localhost:8000/api/v1/data/backgrounds").then((res) => {
-        const { data } = res.data;
-        //if (localBackgrounds === data.backgrounds) return;
-
-        // dispatch({ type: "SET_BACKGROUNDS", payload: data.backgrounds });
-        setBackgrounds(data.backgrounds);
-      });
-    } catch (err) {
-      console.log(err.message);
-    }
-  }, []);
+  const backgrounds = useSelector((state) => state.data.backgrounds);
 
   const getConfigurableProps = {
     showArrows: true,
@@ -66,18 +48,18 @@ const Landing = () => {
           </p>
         </div>
         <div className="b">
-          <h1>Get ready for your lifetime journey!</h1>
-          <h5>
-            Collection of the most beautiful places
-            <br />
-            experiences and unusual housing in the world
-          </h5>
-          <Link to="/quiz">
-            <button type="button" className="btn btn-primary btn-lg">
-              Get Started
-            </button>
-          </Link>
-        </div>
+        <h1>Get ready for your lifetime journey!</h1>
+        <h5>
+            Collection of the most beautiful places<br />experiences and unusual
+          housing in the world
+        </h5>
+                  <Link to="/quiz">
+          <button type="button" className="btn btn-primary btn-lg">
+            Get Started
+          </button>
+        </Link>
+          </div>
+
       </div>
     </div>
   );

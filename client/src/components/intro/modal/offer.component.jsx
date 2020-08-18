@@ -4,7 +4,7 @@ import "./offer.component.styles.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Carousel } from "react-responsive-carousel";
-import definePrice from '../../helpers/filterPrices'
+import definePrice from '../../../helpers/filterPrices'
 
 Modal.setAppElement("#root");
 const ShowOffer = ({ modalIsOpen, closeModal, data }) => {

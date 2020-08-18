@@ -1,4 +1,4 @@
-const dataReducer = (state = {}, action) => {
+const dataReducer = (state = {backgrounds: []}, action) => {
   switch (action.type) {
     case "UPDATE_DATA": {
       return { ...state, destinations: action.payload };

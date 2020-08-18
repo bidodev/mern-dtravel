@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./discover.component.styles.scss";
 
-import ShowModal from "../../modal/offer.component";
+import ShowModal from "../../intro/modal/offer.component";
 import ExperienceItem from "./experiences/experience.item.component";
 
 const Discover = () => {
