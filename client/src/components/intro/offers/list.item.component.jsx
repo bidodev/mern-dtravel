@@ -1,15 +1,27 @@
 import React, { Fragment } from "react";
-import './list.item.styles.scss'
+import "./list.item.styles.scss";
 
-function ListItem({ _id, productName, description, cover, imgs, continent, price, type }) {
+import sanitizeNames from '../../../helpers/sanitezeNames';
+import filterPrices from '../../../helpers/filterPrices';
 
+
+function ListItem({
+  _id,
+  productName,
+  description,
+  cover,
+  imgs,
+  continent,
+  price,
+  type,
+}) {
   //grab the url and description from the cover object.
-  const { url} = cover;
+  const { url } = cover;
 
   return (
-    <div className="offers-item">
+    <div className="offer-item">
       <Fragment>
-        <h3>{productName.charAt(0).toUpperCase() + productName.slice(1)}</h3>
+        <h3>{sanitizeNames(productName)}</h3>
         <div className="img-container">
           <img
             className={"img-card"}
@@ -20,10 +32,10 @@ function ListItem({ _id, productName, description, cover, imgs, continent, price
         </div>
         <p>
           <ion-icon name="navigate-outline"></ion-icon>: &nbsp;
-          {continent.charAt(0).toUpperCase() + continent.slice(1)}
+          {sanitizeNames(continent)}
         </p>
         <p>
-          <ion-icon name="cash-outline"></ion-icon>: &nbsp; {price}
+          <ion-icon name="cash-outline"></ion-icon>: {filterPrices(price)}
         </p>
         <p className="description">{description}</p>
       </Fragment>

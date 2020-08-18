@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./experience.item.component.styles.scss";
 
+import sanitizeNames from "../../../../helpers/sanitezeNames"
+
+
 const Card = (props) => {
   const { id, cover, productName, country, openModal, type } = props;
 
@@ -9,16 +12,6 @@ const Card = (props) => {
 
   const [isHovering, setIsHovering] = useState(false);
 
-  /**
-   * Function to capitalize the first letter of each word.
-   * @param {*} str
-   */
-  const sanitizeNames = (str) => {
-    return str ? str
-      .split(" ")
-      .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
-      .join(" "): 'null';
-  };
 
   return (
     <div
