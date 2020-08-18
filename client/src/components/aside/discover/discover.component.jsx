@@ -14,12 +14,11 @@ const Discover = () => {
   const [dataModal, setDataModal] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:8000/api/v1/data/${item}`).then((res) => {
+    axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then((res) => {
       const { data } = res.data;
       setResults(data.results);
     });
   }, [item]);
-
 
   /**
    * 1. This function set the status of the Modal to Open.
@@ -46,12 +45,33 @@ const Discover = () => {
       <h2>Discover</h2>
       <nav
         className="aside-main-nav"
-        onClick={({target}) => updateItem(target.value)}
+        onClick={({ target }) => updateItem(target.value)}
       >
         <button value="places">Places</button>
         <button value="experiences">Experiences</button>
         <button value="housings">Housings</button>
       </nav>
+      <div className="aside-adventurous__mood">
+        <ul className="aside-adventurous__mood-icons">
+          <li>
+            <ion-icon id="tropical" name="sunny-outline"></ion-icon>
+          </li>
+
+          <li>
+            <ion-icon id="winter" name="snow-outline"></ion-icon>
+          </li>
+
+          <li>
+            <ion-icon id="mountain" name="map-outline"></ion-icon>
+          </li>
+          <li>
+            <ion-icon id="cycling" name="bicycle"></ion-icon>
+          </li>
+          <li>
+            <ion-icon id="city" name="business-outline"></ion-icon>
+          </li>
+        </ul>
+      </div>
 
       <ShowModal
         data={dataModal}
