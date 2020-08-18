@@ -57,7 +57,18 @@ exports.createPlace = async (req, res) => {
 //request only 1 place..
 exports.getPlace = async (req, res, next) => {
   try {
-    const place = await Place.findById(req.params.id);
+    const { name } = req.params;
+
+    const place = await Place.find({
+      $or: [
+        {
+          productName: { $regex: `.*${name}.*` },
+        },
+        {
+          description: { $regex: `.*${name}.*` },
+        },
+      ],
+    });
 
     //if there is no place we return from this function, otherwise we will send 2 response ang get an error
     if (!place) {
