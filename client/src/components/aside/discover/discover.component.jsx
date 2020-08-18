@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import "./discover.component.styles.scss";
 import { Link } from "react-router-dom";
 
@@ -9,12 +9,20 @@ import ExperienceItem from "./experiences/experience.item.component";
 
 const Discover = () => {
   const [item, updateItem] = useState("places");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    axios(`http://localhost:8000/api/v1/data/${item}`).then((res) => {
+      const { data } = res.data;
+      setResults(data.places);
+    });
+  }, [item]);
 
   //1. We have to select our full data from the state
-  const fullData = useSelector(({ data }) => data);
+  //const fullData = useSelector(({ data }) => data);
 
   //2. Check which input the user passed..
-  const searchInput = useSelector((state) => state.searchInput);
+  //const searchInput = useSelector((state) => state.searchInput);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState({});
@@ -39,59 +47,12 @@ const Discover = () => {
     setIsOpen(false);
   };
 
-  // const HandleNav = (current) => {
-  //   const filteredSearch = (switchData) => {
-  //     const newSearch = handleOfferSearch(searchInput, switchData);
-
-  //     // Shuffle array
-  //     const shuffled = newSearch.sort(() => 0.5 - Math.random());
-
-  //     // Get sub-array of first n elements after shuffled
-  //     return shuffled.slice(0, 2);
-  //   };
-  //   switch (item) {
-  //     case "experiences":
-  //       return filteredSearch(fullData.experiences)
-  //         .filter((item, index) => index < lastIndex)
-  //         .map(({ ...item }) => (
-  //           <ExperienceItem
-  //             key={item.id}
-  //             {...item}
-  //             openModal={openModal}
-  //             typeref={"experiences"}
-  //           />
-  //         ));
-  //     case "places":
-  //       return filteredSearch(fullData.destinations)
-  //         .filter((item, index) => index < lastIndex)
-  //         .map(({ ...item }) => (
-  //           <ExperienceItem
-  //             key={item.id}
-  //             {...item}
-  //             openModal={openModal}
-  //             typeref={"places"}
-  //           />
-  //         ));
-  //     case "housings":
-  //       return filteredSearch(fullData.housings).map(({ ...item }) => (
-  //         <ExperienceItem
-  //           key={item.id}
-  //           {...item}
-  //           openModal={openModal}
-  //           typeref={"housings"}
-  //         />
-  //       ));
-  //     default:
-  //       return false;
-  //   }
-  // };
-
   return (
     <div className="aside-main">
       <h2>Discover</h2>
       <nav
         className="aside-main-nav"
-        onClick={(event) => updateItem(event.target.value)}
+        onClick={({target}) => updateItem(target.value)}
       >
         <button value="places">Places</button>
         <button value="experiences">Experiences</button>
@@ -105,13 +66,15 @@ const Discover = () => {
       />
 
       <div className="aside-main__carrousel">
-        {[].map((item) => {
-          return (<ExperienceItem
-            key={item.id}
-            {...item}
-            openModal={openModal}
-            typeref={"housings"}
-          />);
+        {results.map((item) => {
+          return (
+            <ExperienceItem
+              key={item.id}
+              {...item}
+              openModal={openModal}
+              typeref={"housings"}
+            />
+          );
         })}
       </div>
       <div className="show-all">
