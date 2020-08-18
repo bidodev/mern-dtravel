@@ -4,9 +4,9 @@ import "./list.item.styles.scss";
 import sanitizeNames from '../../../helpers/sanitezeNames';
 import filterPrices from '../../../helpers/filterPrices';
 
-
 function ListItem({
   _id,
+  country,
   productName,
   description,
   cover,
@@ -30,13 +30,16 @@ function ListItem({
             alt={description}
           />
         </div>
-        <p>
-          <ion-icon name="navigate-outline"></ion-icon>: &nbsp;
-          {sanitizeNames(continent)}
-        </p>
-        <p>
-          <ion-icon name="cash-outline"></ion-icon>: {filterPrices(price)}
-        </p>
+        <div className="infos">
+          <li>
+            <ion-icon name="navigate-outline"></ion-icon>
+            {sanitizeNames(country)}
+          </li>
+          <li>
+            <ion-icon name="cash-outline"></ion-icon>
+            {sanitizeNames(filterPrices(price))}
+          </li>
+        </div>
         <p className="description">{description}</p>
       </Fragment>
     </div>
