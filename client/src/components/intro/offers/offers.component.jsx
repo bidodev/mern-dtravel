@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ExperienceItem from "../../aside/discover/experiences/experience.item.component";
+import ExperienceItem from "./list.item.component";
 
 /* import smoothScroll from "./smoothScroll" */
 import "./offers.component.styles.scss";
