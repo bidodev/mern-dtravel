@@ -22,9 +22,11 @@ The reason I built it was to practice building web applications from scratch and
 
 ## Features
 - 
+-
 
 
 To Do:
+-
 -
 
 ## Design
