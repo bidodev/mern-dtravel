@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-//import { useSelector } from "react-redux";
-import "./discover.component.styles.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import "./discover.component.styles.scss";
 
 import ShowModal from "../../modal/offer.component";
 import ExperienceItem from "./experiences/experience.item.component";
@@ -11,21 +10,16 @@ const Discover = () => {
   const [item, updateItem] = useState("places");
   const [results, setResults] = useState([]);
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [dataModal, setDataModal] = useState({});
+
   useEffect(() => {
     axios(`http://localhost:8000/api/v1/data/${item}`).then((res) => {
       const { data } = res.data;
-      setResults(data.places);
+      setResults(data.results);
     });
   }, [item]);
 
-  //1. We have to select our full data from the state
-  //const fullData = useSelector(({ data }) => data);
-
-  //2. Check which input the user passed..
-  //const searchInput = useSelector((state) => state.searchInput);
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [dataModal, setDataModal] = useState({});
 
   /**
    * 1. This function set the status of the Modal to Open.
@@ -69,7 +63,7 @@ const Discover = () => {
         {results.map((item) => {
           return (
             <ExperienceItem
-              key={item.id}
+              key={item._id}
               {...item}
               openModal={openModal}
               typeref={"housings"}

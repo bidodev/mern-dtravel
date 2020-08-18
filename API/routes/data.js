@@ -10,6 +10,10 @@ const {
   deletePlace,
   updatePlace,
   getPlacesStats,
+  getAllExperiences,
+  createExperience,
+  getAllHouses,
+  createHouse,
 } = require('../controllers/dataController');
 
 const {
@@ -17,12 +21,14 @@ const {
   createBackground,
 } = require('../controllers/homeController');
 
-const { protect } = require('../controllers/authController');
+//const { protect } = require('../controllers/authController');
 
 router.route('/places-stats').get(getPlacesStats);
 router.route('/backgrounds').get(getAllBackgrounds).post(createBackground);
 
-router.route('/').get(getAllPlaces).post(createPlace);
+router.route('/places').get(getAllPlaces).post(createPlace);
+//router.route('/experiences').get(getAllExperiences).post(createExperience);
+router.route('/housings').get(getAllHouses).post(createHouse);
 router.route('/:id').get(getPlace).delete(deletePlace).patch(updatePlace);
 
 module.exports = router;
