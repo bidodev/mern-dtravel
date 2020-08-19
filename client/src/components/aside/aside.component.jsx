@@ -3,7 +3,6 @@ import Header from "./header/header.component";
 import Discover from "./discover/discover.component";
 import Search from "./search/search.component";
 import { useSelector } from "react-redux";
-import AdventurousMood from "./adventurousmood/adventurousmood.component.jsx";
 
 function Aside() {
   const LoginPage = ({ CurrentUser }) => {

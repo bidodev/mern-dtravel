@@ -5,35 +5,44 @@ import ExperienceItem from "./list.item.component";
 /* import smoothScroll from "./smoothScroll" */
 import "./offers.component.styles.scss";
 
-const Offers = ({match}) => {
+const Offers = ({ match }) => {
   //console.log(match.path);
 
   const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     axios(
       `http://localhost:8000/api/v1/data${match.path}?page=${page}&limit=3`
     ).then((res) => {
-      const { data } = res.data;
+      const { data, totalItems } = res.data;
+      setTotalItems(totalItems);
       setResults(data.results);
     });
   }, [match.path, page]);
 
+  const generatePages = (items) => {
+    let html = [];
+    let counter = 1;
+    for (let i = 1; i < items; i += 3) {
+      html.push(<button value={counter}>{counter}</button>)
+      counter++;
+    }
+    console.log(html)
+    return html;
+  };
+
   return (
     <div className="offers-wrapper">
-
       <div className="display">
-      {results.map((item) => (
-        <ExperienceItem key={item._id} {...item} />
-      ))}
+        {results.map((item) => (
+          <ExperienceItem key={item._id} {...item} />
+        ))}
       </div>
       <ul onClick={(event) => setPage(event.target.value)}>
-        <button value="1">1</button>
-        <button value="2">2</button>
-        <button value="3">3</button>
+        {generatePages(totalItems)}
       </ul>
-
     </div>
   );
 };
