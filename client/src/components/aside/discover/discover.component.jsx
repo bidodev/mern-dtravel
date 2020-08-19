@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./discover.component.styles.scss";
 
@@ -14,10 +14,12 @@ const Discover = () => {
   const [dataModal, setDataModal] = useState({});
 
   useEffect(() => {
-    axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then((res) => {
-      const { data } = res.data;
-      setResults(data.results);
-    });
+    axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then(
+      (res) => {
+        const { data } = res.data;
+        setResults(data.results);
+      }
+    );
   }, [item]);
 
   /**
@@ -39,6 +41,20 @@ const Discover = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  const ShowOffers=() =>{
+    let history = useHistory();
+
+    function handleClick() {
+      history.push(item);
+    }
+
+    return (
+      <button type="button" onClick={handleClick}>
+        Show all {`${item}`}
+      </button>
+    );
+  }
 
   return (
     <div className="aside-main">
@@ -92,7 +108,7 @@ const Discover = () => {
         })}
       </div>
       <div className="show-all">
-        <Link to="offers">Show All Offers</Link>
+        <ShowOffers />
       </div>
     </div>
   );

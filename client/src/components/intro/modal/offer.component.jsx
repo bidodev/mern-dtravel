@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Carousel } from "react-responsive-carousel";
 import definePrice from '../../../helpers/filterPrices'
+import limitDesc from '../../../helpers/limiteDesc'
 
 Modal.setAppElement("#root");
 const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
@@ -90,7 +91,7 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
           {imgs
             ? [cover, ...imgs].map(({ url, description }) => (
                 <div key={Math.ceil(Math.random())}>
-                  <img src={`./img/${type}/${url}`} alt={description} />
+                  <img src={`./img/${type}/${url}`} loading="eager" alt={description} />
                   <p className="legend">{description}</p>
                 </div>
               ))

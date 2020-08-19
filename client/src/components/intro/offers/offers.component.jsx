@@ -5,21 +5,24 @@ import ExperienceItem from "./list.item.component";
 /* import smoothScroll from "./smoothScroll" */
 import "./offers.component.styles.scss";
 
-const Offers = () => {
+const Offers = ({match}) => {
+  //console.log(match.path);
+
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1)
 
   useEffect(() => {
     axios(
-      `http://localhost:8000/api/v1/data/places?page=${page}&limit=3`
+      `http://localhost:8000/api/v1/data${match.path}?page=${page}&limit=3`
     ).then((res) => {
       const { data } = res.data;
       setResults(data.results);
     });
-  }, [page]);
+  }, [match.path, page]);
 
   return (
     <div className="offers-wrapper">
+
       <div className="display">
       {results.map((item) => (
         <ExperienceItem key={item._id} {...item} />

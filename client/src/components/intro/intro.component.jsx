@@ -45,7 +45,9 @@ const Intro = () => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/quiz" component={Quiz} />
         <Route exact path="/blog" component={About} />
-        <Route exact path="/offers" component={Offers} />
+        <Route exact path="/places" component={Offers} />
+        <Route exact path="/experiences" component={Offers} />
+        <Route exact path="/housings" component={Offers} />
         <Route
           exact
           path="/login"

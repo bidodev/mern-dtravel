@@ -3,6 +3,7 @@ import "./list.item.styles.scss";
 
 import sanitizeNames from '../../../helpers/sanitezeNames';
 import filterPrices from '../../../helpers/filterPrices';
+import limitResults from '../../../helpers/limiteDesc';
 
 function ListItem({
   _id,
@@ -40,7 +41,7 @@ function ListItem({
             {sanitizeNames(filterPrices(price))}
           </li>
         </div>
-        <p className="description">{description}</p>
+        <p className="description">{limitResults(description, 300)}</p>
       </Fragment>
     </div>
   );
