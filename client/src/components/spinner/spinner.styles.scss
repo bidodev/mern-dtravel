@@ -1,10 +1,10 @@
 .loading {
-  width: 100vw;
-  height: 100vh;
+  width: inherit;
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 2rem;
   color: green;
-  background-color: white;
+  background-color: inherit;
 }

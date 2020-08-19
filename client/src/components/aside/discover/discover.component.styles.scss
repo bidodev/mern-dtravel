@@ -11,7 +11,6 @@
   height: 95vh;
   //border: 1px solid red;
 
-
   .aside-main {
     height: 75%;
     display: flex;
@@ -31,12 +30,10 @@
       button {
         color: #909090;
 
-        &:hover{
-          color: #f75d37
+        &:hover {
+          color: #f75d37;
         }
-
       }
-    
     }
 
     h2 {
@@ -47,19 +44,29 @@
 
     &__carrousel {
       width: 100%;
-      height: auto;
+      height: 40vh;
       display: flex;
       justify-content: space-around;
-      //border: 1px solid red;
       overflow: hidden;
       scroll-behavior: smooth;
+    }
+    .search-results{
+
+      h3{
+        font-size: 1rem;
+        color: #303030;
+      }
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
     }
 
     .show-all button {
       text-align: right;
       width: 98%;
       color: #303030;
-      
+
       &:hover {
         opacity: 0.5;
         cursor: pointer;
@@ -100,7 +107,7 @@
     justify-content: space-around;
     align-items: center;
   }
-  
+
   ion-icon {
     font-size: 1.5vw;
     color: #f75d37;
@@ -110,7 +117,4 @@
       color: #303030;
     }
   }
-
 }
-
-

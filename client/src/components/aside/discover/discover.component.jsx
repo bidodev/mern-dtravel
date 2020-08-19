@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./discover.component.styles.scss";
+import Spinner from "../../spinner/spinner.component";
 
 import ShowModal from "../../intro/modal/offer.component";
 import ExperienceItem from "./experiences/experience.item.component";
@@ -12,12 +13,17 @@ const Discover = () => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState({});
+  const [spinnerLoading, setSpinnerLoading] = useState();
 
   useEffect(() => {
+    setSpinnerLoading(true);
     axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then(
       (res) => {
         const { data } = res.data;
         setResults(data.results);
+        setTimeout(() => {
+          setSpinnerLoading(false);
+        }, 1000);
       }
     );
   }, [item]);
@@ -42,7 +48,7 @@ const Discover = () => {
     setIsOpen(false);
   };
 
-  const ShowOffers=() =>{
+  const ShowOffers = () => {
     let history = useHistory();
 
     function handleClick() {
@@ -54,7 +60,16 @@ const Discover = () => {
         Show all {`${item}`}
       </button>
     );
-  }
+  };
+
+  const SearchResults = () => {
+    return (
+      <div className="search-results">
+        <h3>Searching for {item}...</h3>
+        <Spinner />
+      </div>
+    );
+  };
 
   return (
     <div className="aside-main">
@@ -76,7 +91,6 @@ const Discover = () => {
           <li>
             <ion-icon id="winter" name="snow-outline"></ion-icon>
           </li>
-
           <li>
             <ion-icon id="mountain" name="map-outline"></ion-icon>
           </li>
@@ -96,16 +110,20 @@ const Discover = () => {
       />
 
       <div className="aside-main__carrousel">
-        {results.map((item) => {
-          return (
-            <ExperienceItem
-              key={item._id}
-              {...item}
-              openModal={openModal}
-              typeref={"housings"}
-            />
-          );
-        })}
+        {spinnerLoading ? (
+          <SearchResults />
+        ) : (
+          results.map((item) => {
+            return (
+              <ExperienceItem
+                key={item._id}
+                {...item}
+                openModal={openModal}
+                typeref={"housings"}
+              />
+            );
+          })
+        )}
       </div>
       <div className="show-all">
         <ShowOffers />

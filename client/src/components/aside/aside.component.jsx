@@ -18,7 +18,6 @@ function Aside() {
       <React.Fragment>
         <Search />
         <Discover />
-        {/* <AdventurousMood /> */}
       </React.Fragment>
     );
   };
