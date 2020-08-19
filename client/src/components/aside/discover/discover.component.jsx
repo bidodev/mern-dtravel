@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./discover.component.styles.scss";
 import Spinner from "../../spinner/spinner.component";
@@ -15,6 +16,9 @@ const Discover = () => {
   const [dataModal, setDataModal] = useState({});
   const [spinnerLoading, setSpinnerLoading] = useState();
 
+  const dispatch = useDispatch();
+  const iconStatus = useSelector(({ filters }) => filters.mood);
+
   useEffect(() => {
     setSpinnerLoading(true);
     axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then(
@@ -26,7 +30,7 @@ const Discover = () => {
         }, 1000);
       }
     );
-  }, [item]);
+  }, [item, iconStatus]);
 
   /**
    * 1. This function set the status of the Modal to Open.
@@ -62,10 +66,21 @@ const Discover = () => {
     );
   };
 
+  // function to update our redux state
+  const updateFilters = (event) => {
+    const valueMood = event.target.id;
+
+    //Update Search input to simulate a search with specific keywords..
+    dispatch({ type: "UPDATE_MOOD", payload: valueMood });
+  };
+
   const SearchResults = () => {
     return (
       <div className="search-results">
-        <h3>Searching for {item}...</h3>
+        
+        <h3>
+          Searching for {iconStatus} {item}...
+        </h3>
         <Spinner />
       </div>
     );
@@ -83,22 +98,34 @@ const Discover = () => {
         <button value="housings">Housings</button>
       </nav>
       <div className="aside-adventurous__mood">
-        <ul className="aside-adventurous__mood-icons">
+        <ul className="aside-adventurous__mood-icons" onClick={updateFilters}>
           <li>
-            <ion-icon id="tropical" name="sunny-outline"></ion-icon>
-          </li>
-
-          <li>
-            <ion-icon id="winter" name="snow-outline"></ion-icon>
-          </li>
-          <li>
-            <ion-icon id="mountain" name="map-outline"></ion-icon>
+            {iconStatus === "tropical" ? (
+              <ion-icon id="tropical" name="sunny"></ion-icon>
+            ) : (
+              <ion-icon id="tropical" name="sunny-outline"></ion-icon>
+            )}
           </li>
           <li>
-            <ion-icon id="cycling" name="bicycle"></ion-icon>
+            {iconStatus === "winter" ? (
+              <ion-icon id="winter" name="snow"></ion-icon>
+            ) : (
+              <ion-icon id="winter" name="snow-outline"></ion-icon>
+            )}
           </li>
           <li>
-            <ion-icon id="city" name="business-outline"></ion-icon>
+            {iconStatus === "mountain" ? (
+              <ion-icon id="mountain" name="map"></ion-icon>
+            ) : (
+              <ion-icon id="mountain" name="map-outline"></ion-icon>
+            )}
+          </li>
+          <li>
+            {iconStatus === "cycling" ? (
+              <ion-icon id="cycling" name="bicycle"></ion-icon>
+            ) : (
+              <ion-icon id="cycling" name="bicycle-outline"></ion-icon>
+            )}
           </li>
         </ul>
       </div>
@@ -113,20 +140,25 @@ const Discover = () => {
         {spinnerLoading ? (
           <SearchResults />
         ) : (
-          results.map((item) => {
-            return (
-              <ExperienceItem
-                key={item._id}
-                {...item}
-                openModal={openModal}
-                typeref={"housings"}
-              />
-            );
-          })
+          <>
+            <div className="bbb">
+              {results.map((item) => {
+                return (
+                  <ExperienceItem
+                    key={item._id}
+                    {...item}
+                    openModal={openModal}
+                    typeref={"housings"}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="show-all">
+              <ShowOffers />
+            </div>
+          </>
         )}
-      </div>
-      <div className="show-all">
-        <ShowOffers />
       </div>
     </div>
   );

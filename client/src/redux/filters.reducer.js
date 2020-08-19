@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-    input: null
+    input: null,
+    mood: null
 }
 
 const searchReducer = (state = INITIAL_STATE, action) => {
@@ -9,6 +10,11 @@ const searchReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 input: (action.payload) ? action.payload : null
             };
+        case 'UPDATE_MOOD':
+                return {
+                    ...state,
+                    mood: (action.payload) ? action.payload : null
+                };
         default:
             return state;
     }

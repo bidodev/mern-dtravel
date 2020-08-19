@@ -17,7 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     login: loginReducer,
     data: dataReducer,
-    searchInput: searchReducer,
+    filters: searchReducer,
     favoritesList: favoritesReducer
 })
 
