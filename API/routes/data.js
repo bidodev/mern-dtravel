@@ -27,7 +27,7 @@ router.route('/places-stats').get(getPlacesStats);
 router.route('/backgrounds').get(getAllBackgrounds).post(createBackground);
 
 router.route('/places').get(getAllPlaces).post(createPlace);
-//router.route('/experiences').get(getAllExperiences).post(createExperience);
+router.route('/experiences').get(getAllExperiences).post(createExperience);
 router.route('/housings').get(getAllHouses).post(createHouse);
 router
   .route('/places/:name')

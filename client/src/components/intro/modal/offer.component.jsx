@@ -9,7 +9,7 @@ import definePrice from '../../../helpers/filterPrices'
 Modal.setAppElement("#root");
 const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
   const {
-    id,
+    _id,
     productName,
     cover,
     imgs,
@@ -41,7 +41,7 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
 
   //Load the list of the Favorites
   const favoritesList = useSelector((state) => state.favoritesList);
-  const isOnFavorites = favoritesList.some((favorites) => favorites.id === id);
+  const isOnFavorites = favoritesList.some((favorites) => favorites.id === _id);
 
   //configurations for the carousel..
   const modalConfig = {
@@ -77,7 +77,7 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
           <div>
             <ion-icon
               name={isOnFavorites ? "bookmark" : "bookmark-outline"}
-              onClick={() => addWishList(id, productName, typeref)}
+              onClick={() => addWishList(_id, productName, typeref)}
             ></ion-icon>
             <ion-icon
               name="close-circle-outline"
