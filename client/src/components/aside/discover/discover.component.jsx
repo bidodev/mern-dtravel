@@ -155,7 +155,7 @@ const Discover = () => {
             </div>
 
             <div className="show-all">
-              <ShowOffers />
+              <ShowOffers/>
             </div>
           </>
         )}
