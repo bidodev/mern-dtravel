@@ -5,13 +5,14 @@ const AppError = require('../utils/appError');
 
 //query for all the places
 exports.getAllPlaces = async (req, res) => {
+
   try {
     const queryObj = { ...req.query };
     const excludeFields = ['page', 'sort', 'limit', 'fields'];
 
     excludeFields.forEach((el) => delete queryObj[el]);
     let query = Place.find(queryObj);
-
+   
     //pagination
     const page = Number(req.query.page) || 1;
     const limit = Number(req.query.limit) || 10;
@@ -30,6 +31,7 @@ exports.getAllPlaces = async (req, res) => {
     res.status(200).json({
       status: 'success',
       results: results.length,
+      totalItems: await Place.countDocuments(),
       data: {
         results,
       },
@@ -66,7 +68,7 @@ exports.getPlace = async (req, res, next) => {
           productName: { $regex: `.*${name}.*` },
         },
         {
-          description: { $regex: `.*${name}.*` },
+          type: { $regex: `.*${name}.*` },
         },
       ],
     });
@@ -246,8 +248,9 @@ exports.getAllExperiences = async (req, res) => {
     query = query.skip(skip).limit(limit);
 
     if (req.query.page) {
-      const numberHouses = await Experience.countDocuments();
-      if (skip >= numberHouses) throw new Error('This page does not exist.');
+      const numberExperiences = await Experience.countDocuments();
+      if (skip >= numberExperiences)
+        throw new Error('This page does not exist.');
     }
 
     const results = await query;
@@ -256,6 +259,7 @@ exports.getAllExperiences = async (req, res) => {
     res.status(200).json({
       status: 'success',
       results: results.length,
+      totalItems: await Experience.countDocuments(),
       data: {
         results,
       },

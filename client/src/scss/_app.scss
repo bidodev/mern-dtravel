@@ -8,21 +8,8 @@
 body {
   background-color: #000;
   overflow-x: hidden;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-}
 
-.App {
-  padding: 1rem;
-  height: 98vh;
-  display: grid;
-  grid-template-columns: 70vw 27vw;
-  border-radius: 36px;
-  //border: 4px solid rgb(42, 42, 42);
-  overflow-x: hidden;
-  
   &::-webkit-scrollbar {
     width: 0.2em;
   }
@@ -36,7 +23,11 @@ body {
   }
 }
 
-a {
-  text-decoration: none;
-  color: #606060;
+.App {
+  
+  display: grid;
+  grid-template-columns: 70vw 28vw;
+  border-radius: 36px;
+  border: 4px solid rgb(136, 2, 2);
+  overflow-x: hidden;
 }
