@@ -16,7 +16,7 @@ function Aside() {
   const NotSignedIn = () => {
     return (
       <React.Fragment>
-        <Search />
+        {/* <Search /> */}
         <Discover />
       </React.Fragment>
     );
@@ -27,6 +27,7 @@ function Aside() {
     <div className="aside">
       <Header />
       {currentUser ? <LoginPage currentUser={currentUser} /> : <NotSignedIn />}
+      <div className="aside-footer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, praesentium.</div>
     </div>
   );
 }

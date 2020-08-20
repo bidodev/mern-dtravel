@@ -156,10 +156,13 @@ const Discover = () => {
 
             <div className="show-all">
               <ShowOffers/>
-            </div>
+              </div>
           </>
         )}
       </div>
+      <div className="qr-code">
+                <img src="./img/qr-code.svg" alt="" />
+              </div>
     </div>
   );
 };
