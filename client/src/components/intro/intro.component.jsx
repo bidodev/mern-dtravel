@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import './intro.styles.scss'
 
 import Landing from "./landing/landing.component";
 import About from "./about/about.component";
