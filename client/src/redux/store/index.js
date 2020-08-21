@@ -12,7 +12,7 @@ const chromeRedux =
 
 if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
-  enhancers.push(chromeRedux);
+  //enhancers.push(chromeRedux);
 }
 
 export const store = createStore(
