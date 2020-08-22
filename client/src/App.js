@@ -17,7 +17,6 @@ const App = () => {
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
-
     axios("http://localhost:8000/api/v1/data/backgrounds").then((res) => {
       const { data } = res.data;
       dispatch({ type: "SET_BACKGROUNDS", payload: data.backgrounds });
@@ -27,7 +26,6 @@ const App = () => {
       setLoadingState(false);
     }, 2000);
 
-    
     const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -55,17 +53,7 @@ const App = () => {
     };
   });
 
-  return (
-    <React.Fragment>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <div className="App">
-            <Landing />
-        </div>
-      )}
-    </React.Fragment>
-  );
+  return <div className="App">{isLoading ? <Spinner /> : <Landing />}</div>;
 };
 
 export default App;
