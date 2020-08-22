@@ -53,7 +53,52 @@ const App = () => {
     };
   });
 
-  return <div className="App">{isLoading ? <Spinner /> : <Landing />}</div>;
+  const Main = () => {
+    return (
+      <div className="app__main">
+        <Hero />
+      </div>
+    );
+  };
+  const Aside = () => {
+    return (
+      <div className="app__aside">
+        <Header />
+        <Filters />
+        <Carousel />
+        <Code />
+        <Footer />
+      </div>
+    );
+  };
+
+  const Hero = () => {
+    return <div className="app__main__hero">Test</div>;
+  };
+
+  const Header = () => {
+    return <div className="app__aside__header">Header</div>;
+  };
+  const Filters = () => {
+    return <div className="app__aside__filters">Filters</div>;
+  };
+  const Carousel = () => {
+    return <div className="app__aside__carousel">Carousel</div>;
+  };
+  const Code = () => {
+    return <div className="app__aside__code">Qr Code</div>;
+  };
+  const Footer = () => {
+    return <div className="app__aside__footer">Footer</div>;
+  };
+
+  return (
+    <div className="app">
+      {/* {isLoading ? <Spinner /> : <Landing />} */}
+      <Main />
+      <Aside />
+    </div>
+  );
 };
 
 export default App;
