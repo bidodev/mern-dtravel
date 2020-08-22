@@ -40,27 +40,6 @@ const Landing = () => {
           </div>
         ))}
       </Carousel>
-
-      <div className="content">
-        <div className="logo">
-          <p>
-            dtravel<span>.</span>
-          </p>
-        </div>
-        <div className="b">
-        <h1>Get ready for your lifetime journey!</h1>
-        <h5>
-            Collection of the most beautiful places<br />experiences and unusual
-          housing in the world
-        </h5>
-                  <Link to="/quiz">
-          <button type="button" className="btn btn-primary btn-lg">
-            Get Started
-          </button>
-        </Link>
-          </div>
-
-      </div>
     </div>
   );
 };
