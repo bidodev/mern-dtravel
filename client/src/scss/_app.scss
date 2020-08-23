@@ -13,11 +13,11 @@ html {
 }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   overflow-x: hidden;
   user-select: none;
   line-height: 1.6;
-  color: #fff;
+  color: #fafafa;
   font-size: 2rem;
   //border: 1px solid red;
   padding: 2vh;
@@ -34,13 +34,9 @@ body {
     grid-row: 1;
     //border: 1px solid blue;
     display: grid;
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(12, minmax(min-content, 1fr));
     grid-template-columns: repeat(12, minmax(min-content, 16rem));
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.1)
-      );
+    background-color: #303030;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 
@@ -138,7 +134,7 @@ body {
       }
 
       .btn-primary {
-        color: #fff;
+        color: #fafafa;
         background-color: #f75d37;
         border-color: #f75d37;
         opacity: 0.9;
@@ -146,13 +142,13 @@ body {
       }
 
       .btn-primary:hover {
-        color: #fff;
+        color: #fafafa;
         opacity: 1;
       }
 
       .btn-primary:focus,
       .btn-primary.focus {
-        color: #fff;
+        color: #fafafa;
         background-color: #0069d9;
         border-color: #0062cc;
         box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
@@ -176,18 +172,19 @@ body {
 
   /* ASIDE */
   &__aside {
-    //background-color: #fff;
+    //background-color: #fafafa;
     grid-column: 10 / -1;
     //border: 1px solid teal;
     display: grid;
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(12, minmax(min-content, 1fr));
     //grid-template-columns: repeat(6, minmax(min-content, 16rem));
-    border-left: 2px dashed black;
+
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 
     &__header {
       //border: 1px solid pink;
+      //margin-left: -70rem;
       border-top-right-radius: 30px;
       grid-column: 1 / -1;
       grid-row: 1 / 2;
@@ -202,7 +199,6 @@ body {
         justify-content: space-between;
         width: 100%;
         list-style: none;
-        font-family: "Nunito", sans-serif;
 
         ul {
           display: flex;
@@ -213,9 +209,9 @@ body {
           //border: 1px solid red;
         }
 
-        &-icon{
+        &-icon {
           border-radius: 50%;
-          background-color: #fff;
+          background-color: #fafafa;
           margin-left: 8px;
           display: flex;
           align-items: center;
@@ -224,19 +220,18 @@ body {
           height: 46px;
         }
 
-        &-search{
+        &-search {
           border-radius: 50%;
-          background-color: #fff;
+          background-color: #fafafa;
           width: 36px;
           height: 36px;
           display: flex;
           align-items: center;
-          justify-content:center;
-    
+          justify-content: center;
+
           ion-icon {
             color: #000;
             font-size: 20px;
-    
           }
         }
         a {
@@ -247,16 +242,19 @@ body {
           text-decoration: none;
         }
       }
-
     }
 
+    /* ASIDE FILTERS*/
     &__filters {
+      padding-top: 1rem;
       grid-column: 1 / -1;
-      grid-row: 2 / 4;
+      grid-row: 2 / 5;
       color: #000;
-      background-color: #fff;
+      background-color: #fafafa;
+      display: grid;
+      align-items: center;
 
-      h2{
+      h2 {
         margin-left: 49.2px;
         letter-spacing: 0.4px;
         font-size: 40px;
@@ -267,7 +265,7 @@ body {
       nav {
         font-size: 1.15rem;
         display: flex;
-        width: 22.2rem;
+        width: 69%;
         justify-content: space-between;
         letter-spacing: 0.4px;
         font-weight: 400;
@@ -276,23 +274,22 @@ body {
 
         button {
           color: #909090;
-  
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font-size: 1.6rem;
+
           &:hover {
             color: #f75d37;
+            cursor: pointer;
           }
         }
       }
-      
-      .aside-adventurous__mood {
+
+      &__mood {
         //border: 1px solid red;
-      
-        h3 {
-          letter-spacing: 0.5px;
-          margin-left: 1vw;
-          color: #181818;
-        }
-      
-        &-icons {
+
+        ul {
           margin-left: 68.27px;
           //border: 1px solid teal;
           width: 67%;
@@ -300,12 +297,17 @@ body {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
+
+          li {
+            list-style: none;
+          }
         }
-      
+
         ion-icon {
-          font-size: 1.5vw;
+          font-size: 1.6vw;
           color: #c4c4c4;
           --ionicon-stroke-width: 26px;
+
           &:hover {
             opacity: 0.8;
             color: #f75d37;
@@ -317,18 +319,62 @@ body {
 
     &__carousel {
       grid-column: 1 / -1;
-      grid-row: 4 / 11;
-      //background-color: green;
-      
+      grid-row: 5 / 11;
+      background-color: #fafafa;
+      padding-left: 15.51px;
+      padding-right: 15.51px;
+      //border: 1px solid blue;
+      display: grid;
+      align-items: center;
+
+      &__items {
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: space-evenly;
+        //border: 1px solid red;
+      }
+
+      &__show-offers button {
+        text-align: right;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        width: 98%;
+        font-size: 1.5rem;
+
+        color: #303030;
+
+        &:hover {
+          opacity: 0.5;
+          color: #f75d37;
+          cursor: pointer;
+        }
+      }
+
+      .search-results {
+        //border: 1px solid red;
+        h3 {
+          font-size: 1.4rem;
+          color: #303030;
+        }
+        display: flex;
+        height: 50%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+      }
     }
 
     &__code {
       grid-column: 1 / -1;
-      grid-row: 10;
+      grid-row: 11 / 13;
       //background-color: brown;
-      background-color: #fff;
-      
-      img{
+      background-color: #fafafa;
+      display: grid;
+      align-items: start;
+
+      img {
         margin-left: 46px;
         width: 75px;
         height: 75px;
@@ -337,12 +383,12 @@ body {
 
     &__footer {
       grid-column: 1 / -1;
-      grid-row: 11;
+      grid-row: 13;
       //background-color: lightcoral;
       border-bottom-right-radius: 30px;
       //align-self: end;
 
-      &__text{
+      &__text {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -350,7 +396,7 @@ body {
         background-color: #606060;
         border-bottom-right-radius: 30px;
         font-size: 13px;
-        color: #fff;
+        color: #fafafa;
       }
     }
   }
