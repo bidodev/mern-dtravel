@@ -66,13 +66,7 @@ const Discover = () => {
     );
   };
 
-  // function to update our redux state
-  const updateFilters = (event) => {
-    const valueMood = event.target.id;
 
-    //Update Search input to simulate a search with specific keywords..
-    dispatch({ type: "UPDATE_MOOD", payload: valueMood });
-  };
 
   const SearchResults = () => {
     return (
@@ -87,49 +81,6 @@ const Discover = () => {
   };
 
   return (
-    <div className="aside-main">
-      <h2>Discover</h2>
-      <nav
-        className="aside-main-nav"
-        onClick={({ target }) => updateItem(target.value)}
-      >
-        <button value="places">Places</button>
-        <button value="experiences">Experiences</button>
-        <button value="housings">Housings</button>
-      </nav>
-      <div className="aside-adventurous__mood">
-        <ul className="aside-adventurous__mood-icons" onClick={updateFilters}>
-          <li>
-            {iconStatus === "tropical" ? (
-              <ion-icon id="tropical" name="sunny"></ion-icon>
-            ) : (
-              <ion-icon id="tropical" name="sunny-outline"></ion-icon>
-            )}
-          </li>
-          <li>
-            {iconStatus === "winter" ? (
-              <ion-icon id="winter" name="snow"></ion-icon>
-            ) : (
-              <ion-icon id="winter" name="snow-outline"></ion-icon>
-            )}
-          </li>
-          <li>
-            {iconStatus === "mountain" ? (
-              <ion-icon id="mountain" name="map"></ion-icon>
-            ) : (
-              <ion-icon id="mountain" name="map-outline"></ion-icon>
-            )}
-          </li>
-          <li>
-            {iconStatus === "cycling" ? (
-              <ion-icon id="cycling" name="bicycle"></ion-icon>
-            ) : (
-              <ion-icon id="cycling" name="bicycle-outline"></ion-icon>
-            )}
-          </li>
-        </ul>
-      </div>
-
       <ShowModal
         data={dataModal}
         closeModal={closeModal}
