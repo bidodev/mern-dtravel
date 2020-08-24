@@ -5,7 +5,7 @@ import './intro.styles.scss'
 
 import Landing from "./landing/landing.component";
 import About from "./about/about.component";
-import Offers from './offers/offers.component'
+import Offers from '../offers/offers.component'
 import Quiz from "./quiz/Quiz.component";
 
 //Sign In / Sign UP Page...
@@ -42,24 +42,7 @@ const Intro = () => {
 
   return (
     <div className="intro">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/quiz" component={Quiz} />
-        <Route exact path="/blog" component={About} />
-        <Route exact path="/places" component={Offers} />
-        <Route exact path="/experiences" component={Offers} />
-        <Route exact path="/housings" component={Offers} />
-        <Route
-          exact
-          path="/login"
-          render={() => (currentUser ? <Redirect to="/" /> : <Authentication />)}
-        />
-        <Route
-          exact
-          path="/favorites"
-          render={() => (currentUser ? <Favorites /> : <Authentication />)}
-        />
-      </Switch>
+
     </div>
   );
 };

@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-//import Landing from "./pages/home/landing";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 import Spinner from "./components/spinner/spinner.component";
 import ExperienceItem from "./components/aside/discover/experiences/experience.item.component";
 import ShowModal from "./components/intro/modal/offer.component";
 import axios from "axios";
+
+import Main from "./pages/home/main";
+import Authentication from "./pages/authentication/authentication";
+import Favorites from './pages/favorites/favorites'
+
+import Offers from './components/offers/offers.component'
+import Quiz from "./components/quiz/Quiz.component";
 
 //import userDispatch to dispatch actions to our react-reduces
 import { useDispatch } from "react-redux";
@@ -67,27 +74,6 @@ const App = () => {
     };
   }, [dispatch]);
 
-  /**
-   * @component
-   * Main component, it has inside hero and the carousel.
-   * It works as a wrapper for the login / favorites /offers / quiz page.
-   */
-  const url = "./background/luca-bravo.jpg";
-  let imgStyle = {
-    backgroundSize: "cover",
-    backgroundImage: `linear-gradient(to left bottom,
-            rgba(0, 0, 0, 0.1),
-            rgba(0, 0, 0, 0.7)
-          ), url("${url}")`,
-  };
-
-  const Main = () => {
-    return (
-      <div className="app__main" style={imgStyle}>
-        <Hero />
-      </div>
-    );
-  };
   const Aside = () => {
     return (
       <div className="app__aside">
@@ -97,31 +83,6 @@ const App = () => {
         <Code />
         <Footer />
       </div>
-    );
-  };
-
-  const Hero = () => {
-    return (
-      <React.Fragment>
-        <div className="app__main__logo">
-          <p>
-            dtravel<span>.</span>
-          </p>
-        </div>
-        <div className="app__main__intro">
-          <h1>Get ready for your lifetime journey!</h1>
-          <h5>
-            Collection of the most beautiful places
-            <br />
-            experiences and unusual housing in the world
-          </h5>
-        </div>
-        <Link to="/quiz">
-          <button type="button" className="btn btn-primary btn-lg">
-            Get Started
-          </button>
-        </Link>
-      </React.Fragment>
     );
   };
 
@@ -199,63 +160,62 @@ const App = () => {
     );
   };
 
-/** Carousel */
-  
-const [item, updateItem] = useState("places");
-const [results, setResults] = useState([]);
+  /** Carousel */
 
-const [modalIsOpen, setIsOpen] = useState(false);
-const [dataModal, setDataModal] = useState({});
-const [spinnerLoading, setSpinnerLoading] = useState();
+  const [item, updateItem] = useState("places");
+  const [results, setResults] = useState([]);
 
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [dataModal, setDataModal] = useState({});
+  const [spinnerLoading, setSpinnerLoading] = useState();
 
-useEffect(() => {
-  setSpinnerLoading(true);
-  axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then(
-    (res) => {
-      const { data } = res.data;
-      setResults(data.results);
-      setTimeout(() => {
-        setSpinnerLoading(false);
-      }, 1000);
-    }
-  );
-}, [item, iconStatus]);
+  useEffect(() => {
+    setSpinnerLoading(true);
+    axios(`http://localhost:8000/api/v1/data/${item}?page=1&limit=2`).then(
+      (res) => {
+        const { data } = res.data;
+        setResults(data.results);
+        setTimeout(() => {
+          setSpinnerLoading(false);
+        }, 1000);
+      }
+    );
+  }, [item, iconStatus]);
 
-/**
- * 1. This function set the status of the Modal to Open.
- * 2. It updates the local state with the Data to render the modal.
- * 3. It checks if the item is on the Favorites and pass (false or true)
- */
-const openModal = (props) => {
   /**
-   * update localState with modal state/data
+   * 1. This function set the status of the Modal to Open.
+   * 2. It updates the local state with the Data to render the modal.
+   * 3. It checks if the item is on the Favorites and pass (false or true)
    */
-  setIsOpen(true);
-  setDataModal(props);
-};
+  const openModal = (props) => {
+    /**
+     * update localState with modal state/data
+     */
+    setIsOpen(true);
+    setDataModal(props);
+  };
 
-/**
- * This function update the local state and close the modal.
- */
-const closeModal = () => {
-  setIsOpen(false);
-};
-  
-const ShowOffers = () => {
-  let history = useHistory();
+  /**
+   * This function update the local state and close the modal.
+   */
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-  function handleClick() {
-    history.push(item);
-  }
+  const ShowOffers = () => {
+    let history = useHistory();
 
-  return (
-    <button type="button" onClick={handleClick}>
-      Show all {`${item}`}
-    </button>
-  );
-};
-  
+    function handleClick() {
+      history.push(item);
+    }
+
+    return (
+      <button type="button" onClick={handleClick}>
+        Show all {`${item}`}
+      </button>
+    );
+  };
+
   const SearchResults = () => {
     return (
       <div className="search-results">
@@ -270,36 +230,36 @@ const ShowOffers = () => {
   const Carousel = () => {
     return (
       <>
-      <ShowModal
-        data={dataModal}
-        closeModal={closeModal}
-        modalIsOpen={modalIsOpen}
-      />
-      <div className="app__aside__carousel">
-        {spinnerLoading ? (
-          <SearchResults />
-        ) : (
-          <>
-            <div className="app__aside__carousel__items">
-              {results.map((item) => {
-                return (
-                  <ExperienceItem
-                    key={item._id}
-                    {...item}
-                    openModal={openModal}
-                    typeref={"housings"}
-                  />
-                );
-              })}
-            </div>
+        <ShowModal
+          data={dataModal}
+          closeModal={closeModal}
+          modalIsOpen={modalIsOpen}
+        />
+        <div className="app__aside__carousel">
+          {spinnerLoading ? (
+            <SearchResults />
+          ) : (
+            <>
+              <div className="app__aside__carousel__items">
+                {results.map((item) => {
+                  return (
+                    <ExperienceItem
+                      key={item._id}
+                      {...item}
+                      openModal={openModal}
+                      typeref={"housings"}
+                    />
+                  );
+                })}
+              </div>
 
-            <div className="app__aside__carousel__show-offers">
-              <ShowOffers />
-            </div>
-          </>
-        )}
+              <div className="app__aside__carousel__show-offers">
+                <ShowOffers />
+              </div>
+            </>
+          )}
         </div>
-        </>
+      </>
     );
   };
   const Code = () => {
@@ -321,13 +281,35 @@ const ShowOffers = () => {
     );
   };
 
+  const currentUser = useSelector(({ login }) => login.currentUser);
+
   return (
     <div className="app">
       {isLoading ? (
         <Spinner />
       ) : (
         <React.Fragment>
-          <Main /> <Aside />
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/quiz" component={Quiz} />
+            <Route exact path="/places" component={Offers} />
+            <Route exact path="/experiences" component={Offers} />
+            <Route exact path="/housings" component={Offers} />
+            <Route
+              exact
+              path="/login"
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <Authentication />
+              }
+            />
+            <Route
+              exact
+              path="/favorites"
+              render={() => (currentUser ? <Favorites /> : <Authentication />)}
+            />
+            </Switch>
+            
+          <Aside />
         </React.Fragment>
       )}
     </div>

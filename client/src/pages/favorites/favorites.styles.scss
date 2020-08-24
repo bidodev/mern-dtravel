@@ -1,4 +1,8 @@
 .wrapper {
+    grid-column: 1 / 10;
+    grid-row: 1;
     background-color: #fefefe;
-    height: 95vh;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: 1.5px dashed black;
 }

@@ -7,9 +7,8 @@ import ExperienceItem from "./list.item.component";
 /* import smoothScroll from "./smoothScroll" */
 import "./offers.component.styles.scss";
 Modal.setAppElement("#root");
-const Offers = ({ match }) => {
-  //console.log(match.path);
 
+const Offers = ({ match }) => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
