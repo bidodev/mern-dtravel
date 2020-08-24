@@ -16,7 +16,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 //import react carousel css
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
-import "./scss/main.scss";
 import App from "./App";
 
 ReactDOM.render(
