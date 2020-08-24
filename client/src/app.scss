@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -23,3 +25,8 @@ body {
   background-color: #181818;
 }
 
+.app {
+    display: grid;
+    grid-template-rows: 96vh;
+    grid-template-columns: repeat(12, minmax(min-content, 16rem));
+}

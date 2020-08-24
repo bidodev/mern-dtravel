@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import "./app.scss";
 
 /**
  * Firebase
@@ -21,14 +22,13 @@ import Spinner from './components/spinner/spinner.component';
 /**
  * Aside Bar
  * */
-import Aside from './components/aside.component';
+import Aside from './components/aside/aside.component';
 
 /** Pages */
 import Main from './pages/main/main';
 import Authentication from './pages/authentication/authentication';
 import Favorites from './pages/favorites/favorites';
 import Offers from './pages/offers/offers.component';
-import Quiz from './components/quiz/Quiz.component';
 
 const App = () => {
   /**Aplication Status
@@ -90,7 +90,6 @@ const App = () => {
         <React.Fragment>
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route exact path="/quiz" component={Quiz} />
             <Route
               exact
               path={['/places', '/experiences', '/housings']}

@@ -1,35 +1,21 @@
-import React from "react";
-import Header from "./header/header.component";
-import Discover from "./discover/discover.component";
-import Search from "./search/search.component";
-import { useSelector } from "react-redux";
+import React from 'react';
+import './aside.styles.scss';
 
-function Aside() {
-  const LoginPage = ({ CurrentUser }) => {
-    return CurrentUser === null ? (
-      ""
-    ) : (
-        <div>Welcome: {currentUser.displayName}</div>
-    );
-  };
+/* Components which compouse the Aside Navbar */
+import Header from '../header/header.component';
+import Filters from '../filters/filters.component';
+import Carousel from '../carousel/carousel.component';
+import Code from '../qrcode/qr-code.component';
+import Footer from '../footer/footer.component';
 
-  const NotSignedIn = () => {
-    return (
-      <React.Fragment>
-        {/* <Search /> */}
-        <Discover />
-      </React.Fragment>
-    );
-  };
-
-  const currentUser = useSelector(({ login }) => login.currentUser);
-  return (
-    <div className="aside">
-      <Header />
-      {currentUser ? <LoginPage currentUser={currentUser} /> : <NotSignedIn />}
-      <div className="aside-footer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, praesentium.</div>
-    </div>
-  );
-}
+const Aside = () => (
+  <div className="app__aside">
+    <Header />
+    <Filters />
+    <Carousel />
+    <Code />
+    <Footer />
+  </div>
+);
 
 export default Aside;

@@ -33,7 +33,7 @@ const Offers = ({ match }) => {
     return html;
   };
 
-  const ShowOffers = () => {
+  const CloseOffers = () => {
     let history = useHistory();
     function handleClick() {
       history.push("/");
@@ -49,7 +49,7 @@ const Offers = ({ match }) => {
   return (
     <div className="offers-wrapper">
       <div className="display">
-        <ShowOffers />
+        <CloseOffers />
         <div className="dddd">
           {results.map((item) => (
             <ExperienceItem key={item._id} {...item} />

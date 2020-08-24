@@ -34,7 +34,7 @@
     border-radius: 30px;
     outline: none;
     padding: 20px;
-    width: 63vw;
+    width: 67vw;
     margin-left: 2rem;
     animation-name: modalFade;
     animation-duration: 3s;
@@ -70,7 +70,8 @@
       width: 10rem;
 
       ion-icon {
-        font-size: 2rem;
+        font-size: 3.2rem;
+        color: #303030;
         &:hover {
           opacity: 0.5;
           color: #ff0000;
@@ -89,7 +90,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1rem;
+        font-size: 1.6rem;
       }
 
       div {
@@ -121,16 +122,19 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 30rem;
-
+  width: 30%;
+  //border: 1px solid red;
+  
   li {
+    
     display: flex;
     align-items: center;
     width: auto;
-    font-size: 1.3rem;
+    font-size: 2rem;
+    color: #303030;
 
     ion-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #f75d37;
       margin-right: 0.8rem;
     }
@@ -139,12 +143,6 @@
 
 .description {
   text-align: justify;
-  padding: 1rem;
+  font-size: 1.6rem;
   color: #303030;
 }
-
-// .gallery-container {
-//   height: 15vh;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
-// }

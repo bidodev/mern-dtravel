@@ -1,17 +1,9 @@
-.app {
-  display: grid;
-  grid-template-rows: 96vh;
-  grid-template-columns: repeat(12, minmax(min-content, 16rem));
-
-  /* ASIDE */
-  &__aside {
+.app__aside {
     //background-color: #fafafa;
     grid-column: 10 / -1;
     //border: 1px solid teal;
     display: grid;
-    grid-template-rows: repeat(12, minmax(min-content, 1fr));
-    //grid-template-columns: repeat(6, minmax(min-content, 16rem));
-
+    grid-template-rows: 96.07px repeat(12, minmax(min-content, 1fr));
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 
@@ -162,7 +154,7 @@
 
     &__carousel {
       grid-column: 1 / -1;
-      grid-row: 5 / 11;
+      grid-row: 5 / 12;
       background-color: #fafafa;
       padding-left: 15.51px;
       padding-right: 15.51px;
@@ -211,7 +203,7 @@
 
     &__code {
       grid-column: 1 / -1;
-      grid-row: 11 / 13;
+      grid-row: 12 / 14;
       //background-color: brown;
       background-color: #fafafa;
       display: grid;
@@ -226,16 +218,16 @@
 
     &__footer {
       grid-column: 1 / -1;
-      grid-row: 13;
+      grid-row: 15 / 16;
       //background-color: lightcoral;
       border-bottom-right-radius: 30px;
       //align-self: end;
 
       &__text {
+        height: 43.48px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 43.84px;
         background-color: #606060;
         border-bottom-right-radius: 30px;
         font-size: 13px;
@@ -243,4 +235,3 @@
       }
     }
   }
-}

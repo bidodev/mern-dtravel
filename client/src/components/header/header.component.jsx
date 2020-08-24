@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 //import authtentication from firebase
-import { auth } from "../firebase/firebase.utils.js";
+import { auth } from "../../firebase/firebase.utils.js";
 
 const Header = () => {
   //load the currentUser propertie from the redux store.

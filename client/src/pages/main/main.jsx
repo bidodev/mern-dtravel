@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.styles.scss";
 
-import Hero from "../../components/hero.component";
+import Hero from "../../components/hero/hero.component";
 
 /**
  * @component

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./experience.item.component.styles.scss";
 
-import sanitizeNames from "../../../../helpers/sanitezeNames"
+import sanitizeNames from "../../helpers/sanitezeNames"
 
 
 const Card = (props) => {

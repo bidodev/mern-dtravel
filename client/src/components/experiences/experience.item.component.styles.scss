@@ -33,16 +33,15 @@
     pointer-events: none;
 
     li {
-
-      h4{
-        font-size: 1rem;
+      h4 {
+        font-size: 1.6rem;
       }
       display: flex;
       width: 10vw;
       align-items: center;
       list-style-type: none;
-      font-size: 0.9rem;
-      ion-icon{
+      font-size: 1.3rem;
+      ion-icon {
         padding-right: 0.5rem;
       }
     }

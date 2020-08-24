@@ -1,14 +1,10 @@
-.app {
-  display: grid;
-  grid-template-rows: 96vh;
-  grid-template-columns: repeat(12, minmax(min-content, 16rem));
-
-  &__main {
+.app__main {
     grid-column: 1 / 10;
     grid-row: 1;
-    //border: 1px solid blue;
+
+    //subgrind
     display: grid;
-    grid-template-rows: repeat(12, minmax(min-content, 1fr));
+    grid-template-rows: 96.07px repeat(12, minmax(min-content, 1fr));
     grid-template-columns: repeat(12, minmax(min-content, 16rem));
     background-color: #303030;
     border-top-left-radius: 30px;
@@ -26,7 +22,7 @@
       grid-column: 2 / 7;
       grid-row: 1 / 2;
       //border: 1px solid pink;
-      font-size: 1.6vw;
+      font-size: 1.7vw;
       letter-spacing: 0.8px;
       display: flex;
       align-items: center;
@@ -43,13 +39,14 @@
       //align-self: center;
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: space-around;
 
       h1 {
+        font-size: 4rem;
       }
 
       h5 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 600;
       }
     }
@@ -58,6 +55,7 @@
       //border: 1px solid brown;
       grid-column: 2 / 3;
       grid-row: 8 / 9;
+      align-self: center;
 
       .btn {
         display: inline-block;
@@ -143,4 +141,3 @@
       }
     }
   }
-}
