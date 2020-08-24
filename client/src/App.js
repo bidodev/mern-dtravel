@@ -1,15 +1,39 @@
-import React, { useEffect, useState } from "react";
-import Landing from "./pages/home/landing";
-import Spinner from "./components/spinner/spinner.component";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-//import userDispatch to dispatch actions to our react-reduces
-import { useDispatch } from "react-redux";
+/**
+ * Firebase
+ * auth and createUserProfileDocument methods 
+ * */
+import { auth, createUserProfileDocument } from './firebase/firebase.utils.js';
 
-//import authtentication from firebase
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
+/**
+ * Axios 
+ * */
+import axios from 'axios';
+
+/**
+ * Spinner 
+ * */
+import Spinner from './components/spinner/spinner.component';
+
+/**
+ * Aside Bar
+ * */
+import Aside from './components/aside.component';
+
+/** Pages */
+import Main from './pages/main/main';
+import Authentication from './pages/authentication/authentication';
+import Favorites from './pages/favorites/favorites';
+import Offers from './pages/offers/offers.component';
+import Quiz from './components/quiz/Quiz.component';
 
 const App = () => {
+  /**Aplication Status
+   * default isLoading: true
+   */
   const [isLoading, setLoadingState] = useState(true);
 
   //Use dispatch, similar to connect when not using Hooks
@@ -17,9 +41,9 @@ const App = () => {
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
-    axios("http://localhost:8000/api/v1/data/backgrounds").then((res) => {
+    axios('http://localhost:8000/api/v1/data/backgrounds').then((res) => {
       const { data } = res.data;
-      dispatch({ type: "SET_BACKGROUNDS", payload: data.backgrounds });
+      dispatch({ type: 'SET_BACKGROUNDS', payload: data.backgrounds });
     });
 
     setTimeout(() => {
@@ -32,7 +56,7 @@ const App = () => {
         userRef.onSnapshot((snapShot) => {
           //Update our redux store with the newUser Object.
           dispatch({
-            type: "LOGIN_USER",
+            type: 'LOGIN_USER',
             payload: {
               id: snapShot.id,
               ...snapShot.data(),
@@ -41,7 +65,7 @@ const App = () => {
         });
       } else {
         dispatch({
-          type: "LOGIN_USER",
+          type: 'LOGIN_USER',
           payload: userAuth, //it will be null
         });
       }
@@ -51,9 +75,45 @@ const App = () => {
     return () => {
       unsubscribe();
     };
-  });
+  }, [dispatch]);
 
-  return <div className="App">{isLoading ? <Spinner /> : <Landing />}</div>;
+  const currentUser = useSelector(({ login }) => login.currentUser);
+
+  /* If the Aplication sttatus isLoading, render the Spinner,
+   * otherwise render the routes and the aside (navigation bar component)
+   */
+  return (
+    <div className="app">
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <React.Fragment>
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/quiz" component={Quiz} />
+            <Route
+              exact
+              path={['/places', '/experiences', '/housings']}
+              component={Offers}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <Authentication />
+              }
+            />
+            <Route
+              exact
+              path="/favorites"
+              render={() => (currentUser ? <Favorites /> : <Authentication />)}
+            />
+          </Switch>
+          <Aside />
+        </React.Fragment>
+      )}
+    </div>
+  );
 };
 
 export default App;

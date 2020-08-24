@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import "./list.item.styles.scss";
 
-import sanitizeNames from '../../../helpers/sanitezeNames';
-import filterPrices from '../../../helpers/filterPrices';
-import limitResults from '../../../helpers/limiteDesc';
+import sanitizeNames from '../../helpers/sanitezeNames';
+import filterPrices from '../../helpers/filterPrices';
+import limitResults from '../../helpers/limiteDesc';
 
 function ListItem({
   _id,
