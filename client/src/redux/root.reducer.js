@@ -3,22 +3,22 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 //load our reducers
-import loginReducer from './login.reducer'
-import dataReducer from './data.reducer'
-import searchReducer from './filters.reducer'
-import favoritesReducer from './favorites.reducer'
+import loginReducer from './login.reducer';
+import dataReducer from './data.reducer';
+import searchReducer from './filters.reducer';
+import favoritesReducer from './favorites.reducer';
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ["favoritesList"]
-}
+  key: 'root',
+  storage,
+  whitelist: ['favoritesList', 'filters'],
+};
 
 const rootReducer = combineReducers({
-    login: loginReducer,
-    data: dataReducer,
-    filters: searchReducer,
-    favoritesList: favoritesReducer
-})
+  login: loginReducer,
+  data: dataReducer,
+  filters: searchReducer,
+  favoritesList: favoritesReducer,
+});
 
 export default persistReducer(persistConfig, rootReducer);
