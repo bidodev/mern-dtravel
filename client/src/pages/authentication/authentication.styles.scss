@@ -1,5 +1,4 @@
-.app {
-  &__authentication {
+.app__authentication {
     /* grid columns and row*/
     grid-column: 1 / 10;
     grid-row: 1;
@@ -8,12 +7,10 @@
 
     /* position */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding-top: 20vh;
     align-items: flex-start;
     background-color: #fcfcfc;
-    background-size: cover;
-    background-position: center;
     color: #181818;
     font-weight: 800;
 
@@ -21,4 +18,3 @@
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
   }
-}

@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./signin.component.styles.scss";
+import React, { useState } from 'react';
+import './signin.component.styles.scss';
 
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import FormInput from "../forms/input.component";
-import CustomButton from "../custom-button/custom-button.component";
+import FormInput from '../forms/input.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
 
   //update redux
   const handleLoginData = async (event) => {
@@ -16,12 +16,11 @@ const Login = () => {
 
     try {
       await auth.signInWithEmailAndPassword(userEmail, userPassword);
-      setUserEmail("")
-      setUserPassword("")
-      alert("Logged with Sucess")
-      
+      setUserEmail('');
+      setUserPassword('');
+      alert('Logged with Sucess');
     } catch (error) {
-      console.log("Error in the login", error.message)
+      console.log('Error in the login', error.message);
     }
   };
 
@@ -30,20 +29,18 @@ const Login = () => {
     const { value, name } = event.target;
 
     switch (name) {
-      case "email":
+      case 'email':
         return setUserEmail(value);
-      case "password":
+      case 'password':
         return setUserPassword(value);
       default:
     }
   };
 
   return (
-    <div>
-      <div className="sign-in">
-        <h2 className="title">I already have an account</h2>
-        <span>Sign in with your email and password</span>
-      </div>
+    <div className="sign-in">
+      <h2 className="title">I already have an account</h2>
+      <span>Sign in with your email and password</span>
       <form onSubmit={handleLoginData}>
         <FormInput
           name="email"

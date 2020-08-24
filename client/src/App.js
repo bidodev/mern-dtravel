@@ -1,27 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory, Switch, Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-import Spinner from "./components/spinner/spinner.component";
-import ExperienceItem from "./components/aside/discover/experiences/experience.item.component";
-import ShowModal from "./components/intro/modal/offer.component";
-import axios from "axios";
-
-import Main from "./pages/home/main";
-import Authentication from "./pages/authentication/authentication";
-import Favorites from './pages/favorites/favorites'
-
-import Offers from './components/offers/offers.component'
-import Quiz from "./components/quiz/Quiz.component";
-
-//import userDispatch to dispatch actions to our react-reduces
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 //import authtentication from firebase
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
+import { auth, createUserProfileDocument } from './firebase/firebase.utils.js';
+
+import './pages/home/aside.styles.scss';
+
+import Spinner from './components/spinner/spinner.component';
+import ExperienceItem from './components/aside/discover/experiences/experience.item.component';
+import ShowModal from './components/intro/modal/offer.component';
+import axios from 'axios';
+
+import Main from './pages/home/main';
+import Authentication from './pages/authentication/authentication';
+import Favorites from './pages/favorites/favorites';
+
+import Offers from './components/offers/offers.component';
+import Quiz from './components/quiz/Quiz.component';
+
+/* Aside Components */
+import Footer from './components/footer.component';
+import Code from './components/qr-code.component';
+import Header from './components/header.component';
+
 
 const App = () => {
-  //spinner status
+
+  /**Aplication Status
+   * default isLoading: true
+   */
   const [isLoading, setLoadingState] = useState(true);
   const iconStatus = useSelector(({ filters }) => filters.mood);
 
@@ -33,14 +41,14 @@ const App = () => {
     const valueMood = event.target.id;
 
     //Update Search input to simulate a search with specific keywords..
-    dispatch({ type: "UPDATE_MOOD", payload: valueMood });
+    dispatch({ type: 'UPDATE_MOOD', payload: valueMood });
   };
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
-    axios("http://localhost:8000/api/v1/data/backgrounds").then((res) => {
+    axios('http://localhost:8000/api/v1/data/backgrounds').then((res) => {
       const { data } = res.data;
-      dispatch({ type: "SET_BACKGROUNDS", payload: data.backgrounds });
+      dispatch({ type: 'SET_BACKGROUNDS', payload: data.backgrounds });
     });
 
     setTimeout(() => {
@@ -53,7 +61,7 @@ const App = () => {
         userRef.onSnapshot((snapShot) => {
           //Update our redux store with the newUser Object.
           dispatch({
-            type: "LOGIN_USER",
+            type: 'LOGIN_USER',
             payload: {
               id: snapShot.id,
               ...snapShot.data(),
@@ -62,7 +70,7 @@ const App = () => {
         });
       } else {
         dispatch({
-          type: "LOGIN_USER",
+          type: 'LOGIN_USER',
           payload: userAuth, //it will be null
         });
       }
@@ -86,35 +94,6 @@ const App = () => {
     );
   };
 
-  const Header = () => {
-    //load the currentUser propertie from the redux store.
-    const currentUser = useSelector(({ login }) => login.currentUser);
-    return (
-      <div className="app__aside__header">
-        <nav className="app__aside__header__nav">
-          <div className="app__aside__header__nav-icon">
-            <img src="./img/dt.svg" alt="" />
-          </div>
-          <ul>
-            <div className="app__aside__header__nav-search">
-              <ion-icon name="search-outline"></ion-icon>
-            </div>
-
-            <Link to="/">Home</Link>
-
-            {currentUser ? <Link to="/favorites">Favorites</Link> : null}
-            {currentUser ? (
-              <div className="option-logged" onClick={() => auth.signOut()}>
-                SIGN OUT
-              </div>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </ul>
-        </nav>
-      </div>
-    );
-  };
   const Filters = () => {
     return (
       <div className="app__aside__filters">
@@ -127,28 +106,28 @@ const App = () => {
         <div className="app__aside__filters__mood">
           <ul onClick={updateFilters}>
             <li>
-              {iconStatus === "tropical" ? (
+              {iconStatus === 'tropical' ? (
                 <ion-icon id="tropical" name="sunny"></ion-icon>
               ) : (
                 <ion-icon id="tropical" name="sunny-outline"></ion-icon>
               )}
             </li>
             <li>
-              {iconStatus === "winter" ? (
+              {iconStatus === 'winter' ? (
                 <ion-icon id="winter" name="snow"></ion-icon>
               ) : (
                 <ion-icon id="winter" name="snow-outline"></ion-icon>
               )}
             </li>
             <li>
-              {iconStatus === "mountain" ? (
+              {iconStatus === 'mountain' ? (
                 <ion-icon id="mountain" name="map"></ion-icon>
               ) : (
                 <ion-icon id="mountain" name="map-outline"></ion-icon>
               )}
             </li>
             <li>
-              {iconStatus === "cycling" ? (
+              {iconStatus === 'cycling' ? (
                 <ion-icon id="cycling" name="bicycle"></ion-icon>
               ) : (
                 <ion-icon id="cycling" name="bicycle-outline"></ion-icon>
@@ -162,7 +141,7 @@ const App = () => {
 
   /** Carousel */
 
-  const [item, updateItem] = useState("places");
+  const [item, updateItem] = useState('places');
   const [results, setResults] = useState([]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -247,7 +226,7 @@ const App = () => {
                       key={item._id}
                       {...item}
                       openModal={openModal}
-                      typeref={"housings"}
+                      typeref={'housings'}
                     />
                   );
                 })}
@@ -262,27 +241,12 @@ const App = () => {
       </>
     );
   };
-  const Code = () => {
-    return (
-      <div className="app__aside__code">
-        <img src="./img/qr-code.svg" alt="" />
-      </div>
-    );
-  };
-
-  /**ASIDE FOOTER */
-  const Footer = () => {
-    return (
-      <div className="app__aside__footer">
-        <div className="app__aside__footer__text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto.
-        </div>
-      </div>
-    );
-  };
 
   const currentUser = useSelector(({ login }) => login.currentUser);
 
+  /* If the Aplication sttatus isLoading, render the Spinner,
+   * otherwise render the routes and the aside (navigation bar component)
+   */
   return (
     <div className="app">
       {isLoading ? (
@@ -292,9 +256,11 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/quiz" component={Quiz} />
-            <Route exact path="/places" component={Offers} />
-            <Route exact path="/experiences" component={Offers} />
-            <Route exact path="/housings" component={Offers} />
+            <Route
+              exact
+              path={['/places', '/experiences', '/housings']}
+              component={Offers}
+            />
             <Route
               exact
               path="/login"
@@ -307,8 +273,8 @@ const App = () => {
               path="/favorites"
               render={() => (currentUser ? <Favorites /> : <Authentication />)}
             />
-            </Switch>
-            
+          </Switch>
+
           <Aside />
         </React.Fragment>
       )}
