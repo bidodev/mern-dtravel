@@ -105,12 +105,17 @@
         //border: 1px solid red;
         margin-left: 62.9px;
 
+        .active {
+          color: #f75d37;
+        } 
+
         button {
           color: #909090;
           border: none;
           background-color: transparent;
           outline: none;
           font-size: 1.6rem;
+        
 
           &:hover {
             color: #f75d37;
@@ -134,6 +139,11 @@
           li {
             list-style: none;
           }
+
+          .active ion-icon {
+            color: #f75d37;
+          } 
+  
         }
 
         ion-icon {

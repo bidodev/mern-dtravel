@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 //import authtentication from firebase
 import { auth } from "../firebase/firebase.utils.js";
@@ -20,15 +20,15 @@ const Header = () => {
             <ion-icon name="search-outline"></ion-icon>
           </div>
 
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
 
-          {currentUser ? <Link to="/favorites">Favorites</Link> : null}
+          {currentUser ? <NavLink to="/favorites">Favorites</NavLink> : null}
           {currentUser ? (
-            <div className="option-logged" onClick={() => auth.signOut()}>
+            <button className="option-logged" onClick={() => auth.signOut()}>
               SIGN OUT
-            </div>
+            </button>
           ) : (
-            <Link to="/login">Login</Link>
+            <NavLink to="/login">Login</NavLink>
           )}
         </ul>
       </nav>
