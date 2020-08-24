@@ -21,7 +21,7 @@ import Spinner from './components/spinner/spinner.component';
 /**
  * Aside Bar
  * */
-import Aside from './components/aside.component';
+import Aside from './components/aside/aside.component';
 
 /** Pages */
 import Main from './pages/main/main';
