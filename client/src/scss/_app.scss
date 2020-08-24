@@ -23,3 +23,8 @@ body {
   background-color: #181818;
 }
 
+.app {
+    display: grid;
+    grid-template-rows: 96vh;
+    grid-template-columns: repeat(12, minmax(min-content, 16rem));
+}

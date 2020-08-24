@@ -4,8 +4,8 @@ import "./offer.component.styles.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Carousel } from "react-responsive-carousel";
-import definePrice from '../../../helpers/filterPrices'
-import limitDesc from '../../../helpers/limiteDesc'
+import definePrice from '../../helpers/filterPrices'
+import sanitizeNames from '../../helpers/sanitezeNames'
 
 Modal.setAppElement("#root");
 const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
@@ -21,12 +21,7 @@ const ShowOffer = ({ modalIsOpen, closeModal, data }) => {
     typeref,
   } = data;
 
-  const sanitizeNames = (str) => {
-    return str ? str
-      .split(" ")
-      .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
-      .join(" "): 'null';
-  };
+  
   /**
    * This functions toogle the favorite on redux store.
    * If it's already on the the store, then remove else add.
