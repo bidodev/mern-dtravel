@@ -52,7 +52,19 @@ const Discover = () => {
     setIsOpen(false);
   };
 
+  const ShowOffers = () => {
+    let history = useHistory();
 
+    function handleClick() {
+      history.push(item);
+    }
+
+    return (
+      <button type="button" onClick={handleClick}>
+        Show all {`${item}`}
+      </button>
+    );
+  };
 
   // function to update our redux state
   const updateFilters = (event) => {
@@ -124,7 +136,30 @@ const Discover = () => {
         modalIsOpen={modalIsOpen}
       />
 
+      <div className="aside-main__carrousel">
+        {spinnerLoading ? (
+          <SearchResults />
+        ) : (
+          <>
+            <div className="bbb">
+              {results.map((item) => {
+                return (
+                  <ExperienceItem
+                    key={item._id}
+                    {...item}
+                    openModal={openModal}
+                    typeref={"housings"}
+                  />
+                );
+              })}
+            </div>
 
+            <div className="show-all">
+              <ShowOffers/>
+              </div>
+          </>
+        )}
+      </div>
       <div className="qr-code">
                 <img src="./img/qr-code.svg" alt="" />
               </div>

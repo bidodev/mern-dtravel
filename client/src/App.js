@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "./components/spinner/spinner.component";
 import ExperienceItem from "./components/aside/discover/experiences/experience.item.component";
+import ShowModal from "./components/intro/modal/offer.component";
 import axios from "axios";
 
 //import userDispatch to dispatch actions to our react-reduces
@@ -268,6 +269,12 @@ const ShowOffers = () => {
 
   const Carousel = () => {
     return (
+      <>
+      <ShowModal
+        data={dataModal}
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+      />
       <div className="app__aside__carousel">
         {spinnerLoading ? (
           <SearchResults />
@@ -291,7 +298,8 @@ const ShowOffers = () => {
             </div>
           </>
         )}
-      </div>
+        </div>
+        </>
     );
   };
   const Code = () => {
