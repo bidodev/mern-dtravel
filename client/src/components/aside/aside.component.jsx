@@ -1,23 +1,21 @@
-import React from "react";
-import "./aside.styles.scss";
+import React from 'react';
+import './aside.styles.scss';
 
-/* Aside Components */
-import Header from '../header.component';
-import Filters from '../filters.component';
-import Carousel from '../carousel.component'
-import Code from '../qr-code.component';
-import Footer from '../footer.component';
+/* Components which compouse the Aside Navbar */
+import Header from '../header/header.component';
+import Filters from '../filters/filters.component';
+import Carousel from '../carousel/carousel.component';
+import Code from '../qrcode/qr-code.component';
+import Footer from '../footer/footer.component';
 
-const Aside = () => {
-  return (
-    <div className="app__aside">
-      <Header />
-      <Filters />
-      <Carousel />
-      <Code />
-      <Footer />
-    </div>
-  );
-};
+const Aside = () => (
+  <div className="app__aside">
+    <Header />
+    <Filters />
+    <Carousel />
+    <Code />
+    <Footer />
+  </div>
+);
 
 export default Aside;

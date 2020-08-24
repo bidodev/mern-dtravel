@@ -28,7 +28,6 @@ import Main from './pages/main/main';
 import Authentication from './pages/authentication/authentication';
 import Favorites from './pages/favorites/favorites';
 import Offers from './pages/offers/offers.component';
-import Quiz from './components/quiz/Quiz.component';
 
 const App = () => {
   /**Aplication Status
@@ -90,7 +89,6 @@ const App = () => {
         <React.Fragment>
           <Switch>
             <Route exact path="/" component={Main} />
-            <Route exact path="/quiz" component={Quiz} />
             <Route
               exact
               path={['/places', '/experiences', '/housings']}

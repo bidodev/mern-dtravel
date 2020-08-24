@@ -41,7 +41,7 @@ function ListItem({
             {sanitizeNames(filterPrices(price))}
           </li>
         </div>
-        <p className="description">{limitResults(description, 300)}</p>
+        <p className="description">{limitResults(description, 400)}</p>
       </Fragment>
     </div>
   );

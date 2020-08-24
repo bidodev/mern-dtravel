@@ -21,24 +21,36 @@
   ul {
     padding-top: 1rem;
     width: auto;
+    height: 43.84px;
     display: flex;
     margin: 0 auto;
 
     button {
-      width: 1rem;
+      outline: none;
+      border: none;
+      background: transparent;
+      font-size: 1.6rem;
+      width: 2rem;
+
+      &:hover {
+        cursor: pointer;
+        color: #f75d37;
+      }
     }
   }
 
   .close-circle-outline {
     display: flex;
     width: 98%;
+    height: 96.07px;
+    align-items: center;
   }
 
   .close-circle-outline ion-icon {
     margin-left: auto;
     margin-bottom: 1.5rem;
     color: #f75d37;
-    font-size: 1.7vw;
+    font-size: 1.9vw;
     --ionicon-stroke-width: 20px;
     &:hover {
       cursor: pointer;
@@ -49,9 +61,9 @@
 
 .display {
   border-radius: 30px;
-  padding: 1rem;
   //background-color: #f5f5f5;
   width: 97%;
+  height: 100%;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -63,7 +75,8 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  //@debug: 1px solid red;
+  
+  //border: 1px solid red;
 }
 
 .page__under-img {

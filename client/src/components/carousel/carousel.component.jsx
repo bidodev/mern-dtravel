@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import Spinner from './spinner/spinner.component'
-import ExperienceItem from './experiences/experience.item.component';
-import ShowModal from './modal/offer.component';
+import Spinner from '../spinner/spinner.component'
+import ExperienceItem from '../experiences/experience.item.component';
+import ShowModal from '../modal/offer.component';
 
 const Carousel = () => {
 /** Carousel */
