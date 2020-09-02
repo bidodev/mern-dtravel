@@ -19,7 +19,7 @@ const Offers = ({ match }) => {
 
   useEffect(() => {
     axios(
-      `http://localhost:8000/api/v1/data${match.path}?page=${page}&limit=3`
+      `/api/v1/data${match.path}?page=${page}&limit=3`
     ).then((res) => {
       const { data, totalItems } = res.data;
       setTotalItems(totalItems);
