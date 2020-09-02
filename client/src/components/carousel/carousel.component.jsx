@@ -19,7 +19,7 @@ const Carousel = () => {
 
   useEffect(() => {
     setSpinnerLoading(true);
-    axios(`http://localhost:8000/api/v1/data/${menuItem}?page=1&limit=2`).then(
+    axios(`/api/v1/data/${menuItem}?page=1&limit=2`).then(
       (res) => {
         const { data } = res.data;
         setResults(data.results);

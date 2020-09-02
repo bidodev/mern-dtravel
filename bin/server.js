@@ -29,14 +29,14 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() => console.log('DB connection successful!', LINK))
+  .then(() => console.log('DB connection successful!'))
   .catch((err) => console.log(err.message));
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '5000';
 app.set('port', port);
 
 /**
