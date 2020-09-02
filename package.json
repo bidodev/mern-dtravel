@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start:dev": "nodemon ./bin/server",
-    "start:production": "NODE_ENV=production nodemon ./bin/server",
+    "start": "NODE_ENV=production node ./bin/server",
     "debug": "ndb ./bin/server.js"
   },
   "dependencies": {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Filters = () => {
   const iconStatus = useSelector(({ filters }) => filters.mood);
   const menuItem = useSelector(({ filters }) => filters.menuItem);
+  
 
   const dispatch = useDispatch();
 

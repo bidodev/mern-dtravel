@@ -25,10 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//routers handler
-app.use('/', indexRouter);
+// Serving Static Files
+app.use(express.static('./client/build'));
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/data', dataRouter);
+
+//routers handler
+app.use('/', indexRouter);
 
 //handling operational errors
 app.all('*', (req, res, next) => {

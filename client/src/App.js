@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import "./app.scss";
+import './app.scss';
 
 /**
  * Firebase
- * auth and createUserProfileDocument methods 
+ * auth and createUserProfileDocument methods
  * */
 import { auth, createUserProfileDocument } from './firebase/firebase.utils.js';
 
 /**
- * Axios 
+ * Axios
  * */
 import axios from 'axios';
 
 /**
- * Spinner 
+ * Spinner
  * */
 import Spinner from './components/spinner/spinner.component';
 
@@ -32,6 +32,16 @@ import Offers from './pages/offers/offers';
 import Quiz from './pages/quiz/quiz';
 
 const App = () => {
+
+  var searchBox = document.querySelectorAll(
+    '.search-box input[type="text"] + span'
+  );
+
+  searchBox.forEach((elm) => {
+    elm.addEventListener('click', () => {
+      elm.previousElementSibling.value = '';
+    });
+  });
   /**Aplication Status
    * default isLoading: true
    */
@@ -42,10 +52,13 @@ const App = () => {
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
-    axios('http://localhost:8000/api/v1/data/backgrounds').then((res) => {
-      const { data } = res.data;
-      dispatch({ type: 'SET_BACKGROUNDS', payload: data.backgrounds });
-    });
+    axios
+      .get('/api/v1/data/backgrounds')
+      .then((res) => {
+        const { data } = res.data;
+        dispatch({ type: 'SET_BACKGROUNDS', payload: data.backgrounds });
+      })
+      .catch((err) => console.log(err.message));
 
     setTimeout(() => {
       setLoadingState(false);

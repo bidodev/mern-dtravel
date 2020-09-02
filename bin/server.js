@@ -18,8 +18,8 @@ dotenv.config({
 const app = require('../app');
 
 //loading variables and creating LINK
-const { HOST, DATABASE } = process.env;
-const LINK = `${HOST}/${DATABASE}`;
+const { HOST, PASSWORD } = process.env;
+const LINK = HOST.replace('<PASSWORD>', PASSWORD);
 
 //connecting
 mongoose
