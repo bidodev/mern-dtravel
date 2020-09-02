@@ -8,7 +8,7 @@ module.exports = (err, req, res, next) => {
     message: err.message,
   };
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
     if (err.isOperational) {
       return res.status(err.statusCode).json(errorObj);
     }
@@ -18,7 +18,7 @@ module.exports = (err, req, res, next) => {
     res.status(500).json({ status: 'error', message: 'Something went wrong' });
   }
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'production') {
     return res.status(err.statusCode).json({
       ...errorObj,
       stack: err.stack,
