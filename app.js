@@ -32,8 +32,11 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/data', dataRouter);
 
-//routers handler
-//app.use('/', indexRouter);
+//send react aplication
+app.get('/', function (req, res) {
+  const index = path.join(__dirname, 'client/build', 'index.html');
+  res.sendFile(index);
+});
 
 //handling operational errors
 app.all('*', (req, res, next) => {
