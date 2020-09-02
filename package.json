@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "start": "node ./bin/server",
     "start:dev": "nodemon ./bin/server",
-    "start": "NODE_ENV=production node ./bin/server",
+    "start:production": "NODE_ENV=production nodemon ./bin/server",
     "debug": "ndb ./bin/server.js"
   },
   "dependencies": {
