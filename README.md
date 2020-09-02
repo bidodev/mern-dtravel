@@ -11,6 +11,8 @@
 This project is not intended for production. 
 The reason I built it was to practice building web applications from scratch and get familiarized with the use of Redux and Firebase.
 
+![preview](./doc/imgs/dtravel.png)
+
 ## Technologies
 
 <img title="React 16" src="https://ih1.redbubble.net/image.32576156.9850/sticker,375x360.png" width="100" /> <img title="Sass" src="https://vanseodesign.com/blog/wp-content/uploads/2015/09/sass-logo-2.png" width="100" />
