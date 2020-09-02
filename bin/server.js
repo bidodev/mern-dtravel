@@ -23,13 +23,13 @@ const LINK = HOST.replace('<PASSWORD>', PASSWORD);
 
 //connecting
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(LINK, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() => console.log('DB connection successful!'))
+  .then(() => console.log('DB connection successful!', LINK))
   .catch((err) => console.log(err.message));
 
 /**
