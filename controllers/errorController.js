@@ -8,17 +8,19 @@ module.exports = (err, req, res, next) => {
     message: err.message,
   };
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'production') {
     if (err.isOperational) {
       return res.status(err.statusCode).json(errorObj);
     }
-    //log tje error to the console
-    // eslint-disable-next-line no-console
+
     console.error('ERROR', err);
     res.status(500).json({ status: 'error', message: 'Something went wrong' });
   }
 
-  if (process.env.NODE_ENV === 'production') {
+  /**
+   * When running in development mode send back the full error stack.
+   */
+  if (process.env.NODE_ENV === 'development') {
     return res.status(err.statusCode).json({
       ...errorObj,
       stack: err.stack,
