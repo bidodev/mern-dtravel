@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const path = require('path');
 
 const app = express();
 const cors = require('cors');
@@ -26,12 +27,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Serving Static Files
-app.use(express.static('./client/build'));
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/data', dataRouter);
 
 //routers handler
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 
 //handling operational errors
 app.all('*', (req, res, next) => {
