@@ -23,7 +23,7 @@ const LINK = HOST.replace('<PASSWORD>', PASSWORD);
 
 //connecting
 mongoose
-  .connect(LINK, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

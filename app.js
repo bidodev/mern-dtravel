@@ -12,8 +12,7 @@ app.use(cors());
 const AppError = require('./utils/appError');
 const errorHandler = require('./controllers/errorController');
 
-//load our routers
-const indexRouter = require('./routes/index');
+
 const usersRouter = require('./routes/users');
 const dataRouter = require('./routes/data');
 
