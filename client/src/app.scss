@@ -1,5 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap');
+/**
+* Variables
+*/
 
+:root {
+  //dark-theme colors
+  --primary-black: #181818;
+  --primary-white: #fafafa;
+
+  //light-theme colors
+  
+}
+.light-theme {
+  --backGroundColor: var(--primary-black);
+  --fontColor: var(--primary-white);
+}
+
+.dark-theme {
+  --backGroundColor: var(--primary-white);
+}
+
+/**
+* Reset values
+*/
 *,
 *::before,
 *::after {
@@ -9,7 +31,6 @@
 }
 
 html {
-  background-color: #181818;
   box-sizing: border-box;
   font-size: 62.5%; //define the 1rem value = 10px
 }
@@ -18,11 +39,10 @@ body {
   font-family: "Nunito Sans", sans-serif;
   overflow: hidden;
   user-select: none;
-  line-height: 1.6;
-  color: #fafafa;
-  //border: 1px solid red;
   padding: 2vh;
-  background-color: #181818;
+  line-height: 1.6;
+  background-color: var(--backGroundColor);
+  color: var(--fontColor);
 }
 
 .app {

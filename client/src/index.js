@@ -18,6 +18,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 import App from "./App";
 
+// Load Nunito Sans typeface
+// reference: https://github.com/KyleAMathews/typefaces/tree/master/packages/nunito-sans
+require('typeface-nunito-sans');
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>
