@@ -14,8 +14,6 @@ function ListItem(props) {
     productName,
     description,
     cover,
-    imgs,
-    continent,
     price,
     type,
     openModal,

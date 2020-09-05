@@ -21,20 +21,23 @@
   --background-black: #101010;
   
 }
-.light-theme {
+//layout themes
+.light-mode {
   --backGroundColor: var(--primary-white);
   --dashedLineColor: var(--primary-black);
   --pagesBackgroundColor: var(--tertiary-white);
   --textFontColor: var(--primary-black);
   --fontColorOrange: var(--secondary-color);
+  --themeValue: var(--primary-white);
 }
 
-.dark-theme {
+.dark-mode {
   --backGroundColor: var(--primary-black);
   --dashedLineColor: var(--primary-grey);
   --pagesBackgroundColor: var(--tertiary-black);
   --textFontColor: var(--primary-white);
   --fontColorOrange: var(--secondary-color);
+  --themeValue: var(--primary-black);
 }
 
 /**

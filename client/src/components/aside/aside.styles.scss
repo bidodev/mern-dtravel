@@ -10,7 +10,6 @@
     border-bottom-right-radius: 3rem;
     transition: background-color 1s ease-in;
 
-    
 
     &__header {
       //border: 1px solid pink;
@@ -226,22 +225,4 @@
       }
     }
 
-    &__footer {
-      grid-column: 1 / -1;
-      grid-row: 15 / 16;
-      //background-color: lightcoral;
-      border-bottom-right-radius: 30px;
-      //align-self: end;
-
-      &__text {
-        height: 43.48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #606060;
-        border-bottom-right-radius: 30px;
-        font-size: 13px;
-        color: #fafafa;
-      }
-    }
   }

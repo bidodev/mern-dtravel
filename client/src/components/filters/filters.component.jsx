@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Filters = () => {
   const iconStatus = useSelector(({ filters }) => filters.mood);
   const menuItem = useSelector(({ filters }) => filters.menuItem);
   
-
   const dispatch = useDispatch();
 
   // function to update our redux state

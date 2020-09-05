@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./experience.item.component.styles.scss";
 
 import sanitizeNames from "../../helpers/sanitezeNames"

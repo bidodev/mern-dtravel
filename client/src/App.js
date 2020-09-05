@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './app.scss';
 
+
 /**
  * Firebase
  * auth and createUserProfileDocument methods
@@ -32,16 +33,7 @@ import Offers from './pages/offers/offers';
 import Quiz from './pages/quiz/quiz';
 
 const App = () => {
-
-  var searchBox = document.querySelectorAll(
-    '.search-box input[type="text"] + span'
-  );
-
-  searchBox.forEach((elm) => {
-    elm.addEventListener('click', () => {
-      elm.previousElementSibling.value = '';
-    });
-  });
+  const themeValue = useSelector(({ userConfig }) => userConfig.darkMode);
   /**Aplication Status
    * default isLoading: true
    */
@@ -52,6 +44,11 @@ const App = () => {
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
+    const className = 'dark-mode';
+    const classList = document.body.classList;
+    
+    themeValue ? classList.add(className) : classList.remove(className);
+    
     axios
       .get('/api/v1/data/backgrounds')
       .then((res) => {
@@ -89,7 +86,7 @@ const App = () => {
     return () => {
       unsubscribe();
     };
-  }, [dispatch]);
+  }, [dispatch, themeValue]);
 
   const currentUser = useSelector(({ login }) => login.currentUser);
 

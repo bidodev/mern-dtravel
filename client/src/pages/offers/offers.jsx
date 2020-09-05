@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 import axios from 'axios';
 import ExperienceItem from './list.item.component';

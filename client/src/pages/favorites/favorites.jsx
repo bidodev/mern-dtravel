@@ -1,13 +1,13 @@
 import React from 'react'
 import './favorites.styles.scss'
 
-import ExperienceItem from "../../components/experiences/experience.item.component";
+//import ExperienceItem from "../../components/experiences/experience.item.component";
 
 import { useSelector } from "react-redux";
 
-const openModal = () => {
+// const openModal = () => {
     
-}
+// }
 
 function Favorites() {
     const favoritesList = useSelector((state) => state.favoritesList)

@@ -22,13 +22,6 @@ const Main = () => {
   return (
     <div className="app__main" style={imgStyle}>
       <Hero />
-      <button
-        onClick={() =>
-          document.body.classList.toggle('dark-theme')
-        }
-      >
-        Change Thema
-      </button>
     </div>
   );
 };
