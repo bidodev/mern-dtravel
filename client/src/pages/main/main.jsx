@@ -1,16 +1,16 @@
-import React from "react";
-import "./main.styles.scss";
+import React from 'react';
+import './main.styles.scss';
 
-import Hero from "../../components/hero/hero.component";
+import Hero from '../../components/hero/hero.component';
 
 /**
  * @component
  * Main component, it has inside hero and the carousel.
  * It works as a wrapper for the login / favorites /offers / quiz page.
  */
-const url = "./background/luca-bravo.jpg";
+const url = './background/luca-bravo.jpg';
 let imgStyle = {
-  backgroundSize: "cover",
+  backgroundSize: 'cover',
   backgroundImage: `linear-gradient(to left bottom,
             rgba(0, 0, 0, 0.1),
             rgba(0, 0, 0, 0.7)
@@ -18,9 +18,17 @@ let imgStyle = {
 };
 
 const Main = () => {
+
   return (
     <div className="app__main" style={imgStyle}>
       <Hero />
+      <button
+        onClick={() =>
+          document.body.classList.toggle('dark-theme')
+        }
+      >
+        Change Thema
+      </button>
     </div>
   );
 };

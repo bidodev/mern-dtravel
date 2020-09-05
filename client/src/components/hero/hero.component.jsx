@@ -1,4 +1,6 @@
 import React from "react";
+import './hero.component.styles.scss';
+
 import { Link } from "react-router-dom";
 import CustomButton from '../custom-button/custom-button.component';
 

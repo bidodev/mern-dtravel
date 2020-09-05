@@ -3,20 +3,38 @@
 */
 
 :root {
-  //dark-theme colors
+  //light-theme colors
+  //primary colors
   --primary-black: #181818;
   --primary-white: #fafafa;
+  --primary-grey: #606060;
 
-  //light-theme colors
+  //secondary colors
+  --secondary-color: #f75d37;
+
+  --tertiary-black: #151515;
+  --tertiary-white: #fcfcfc;
+  //dark-theme colors
+
+  //others
+  //app background colors
+  --background-black: #101010;
   
 }
 .light-theme {
-  --backGroundColor: var(--primary-black);
-  --fontColor: var(--primary-white);
+  --backGroundColor: var(--primary-white);
+  --dashedLineColor: var(--primary-black);
+  --pagesBackgroundColor: var(--tertiary-white);
+  --textFontColor: var(--primary-black);
+  --fontColorOrange: var(--secondary-color);
 }
 
 .dark-theme {
-  --backGroundColor: var(--primary-white);
+  --backGroundColor: var(--primary-black);
+  --dashedLineColor: var(--primary-grey);
+  --pagesBackgroundColor: var(--tertiary-black);
+  --textFontColor: var(--primary-white);
+  --fontColorOrange: var(--secondary-color);
 }
 
 /**
@@ -41,8 +59,7 @@ body {
   user-select: none;
   padding: 2vh;
   line-height: 1.6;
-  background-color: var(--backGroundColor);
-  color: var(--fontColor);
+  background-color: var(--background-black);
 }
 
 .app {

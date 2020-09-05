@@ -1,11 +1,16 @@
 .app__aside {
-    //background-color: #fafafa;
+    /* Position in the main grid*/
+
     grid-column: 10 / -1;
-    //border: 1px solid teal;
+
+    /* create a new grid */
     display: grid;
-    grid-template-rows: 96.07px repeat(12, minmax(min-content, 1fr));
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
+    grid-template-rows: 9.607rem repeat(12, minmax(min-content, 1fr));
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    transition: background-color 1s ease-in;
+
+    
 
     &__header {
       //border: 1px solid pink;
@@ -72,11 +77,11 @@
 
     /* ASIDE FILTERS*/
     &__filters {
+      transition: inherit;
       padding-top: 1rem;
       grid-column: 1 / -1;
       grid-row: 2 / 5;
-      color: #000;
-      background-color: #fafafa;
+      background-color: var(--backGroundColor);
       display: grid;
       align-items: center;
 
@@ -103,6 +108,7 @@
         } 
 
         button {
+          font-family: inherit;
           color: #909090;
           border: none;
           background-color: transparent;
@@ -154,9 +160,10 @@
     }
 
     &__carousel {
+      transition: inherit;
       grid-column: 1 / -1;
       grid-row: 5 / 12;
-      background-color: #fafafa;
+      background-color: var(--backGroundColor);
       padding-left: 15.51px;
       padding-right: 15.51px;
       //border: 1px solid blue;
@@ -172,6 +179,7 @@
       }
 
       &__show-offers button {
+        font-family: inherit;
         text-align: right;
         border: none;
         background-color: transparent;
@@ -203,10 +211,11 @@
     }
 
     &__code {
+      transition: inherit;
       grid-column: 1 / -1;
       grid-row: 12 / 14;
       //background-color: brown;
-      background-color: #fafafa;
+      background-color: var(--backGroundColor);
       display: grid;
       align-items: start;
 

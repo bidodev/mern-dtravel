@@ -1,5 +1,6 @@
 .custom-button {
-  min-width: 165px;
+  font-family: inherit;
+  min-width: 15rem;
   border-radius: 0.3rem;
   width: auto;
   height: 50px;
@@ -10,7 +11,7 @@
   background-color: #f75d37;
   color: white;
   text-transform: uppercase;
-  font-weight: bolder;
+  font-weight: 100;
   border: none;
   cursor: pointer;
 
