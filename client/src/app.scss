@@ -29,6 +29,8 @@
   --textFontColor: var(--primary-black);
   --fontColorOrange: var(--secondary-color);
   --themeValue: var(--primary-white);
+  --cardBrightnessValue: 100%;
+  --hoverCardBrightnessValue: 70%;
 }
 
 .dark-mode {
@@ -38,6 +40,8 @@
   --textFontColor: var(--primary-white);
   --fontColorOrange: var(--secondary-color);
   --themeValue: var(--primary-black);
+  --cardBrightnessValue: 70%;
+  --hoverCardBrightnessValue: 100%;
 }
 
 /**

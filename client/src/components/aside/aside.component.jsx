@@ -5,7 +5,7 @@ import './aside.styles.scss';
 import Header from '../header/header.component';
 import Filters from '../filters/filters.component';
 import Carousel from '../carousel/carousel.component';
-import Code from '../qrcode/qr-code.component';
+import Search from '../search/search.component';
 import Footer from '../footer/footer.component';
 
 const Aside = () => (
@@ -13,7 +13,6 @@ const Aside = () => (
     <Header />
     <Filters />
     <Carousel />
-    <Code />
     <Footer />
   </div>
 );

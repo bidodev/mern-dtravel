@@ -28,12 +28,11 @@
     left: 40px;
     right: 40px;
     bottom: 40px;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
+    background-color: var(--backGroundColor);
     overflow: hidden;
     border-radius: 30px;
     outline: none;
-    padding: 20px;
+    padding: 2.2rem;
     width: 67vw;
     margin-left: 2rem;
     animation-name: modalFade;
@@ -71,7 +70,7 @@
 
       ion-icon {
         font-size: 3.2rem;
-        color: #303030;
+        color: var(--textFontColor);
         &:hover {
           opacity: 0.5;
           color: #ff0000;
@@ -131,7 +130,7 @@
     align-items: center;
     width: auto;
     font-size: 2rem;
-    color: #303030;
+    color: var(--textFontColor);
 
     ion-icon {
       font-size: 2.5rem;
@@ -144,5 +143,5 @@
 .description {
   text-align: justify;
   font-size: 1.6rem;
-  color: #303030;
+  color: var(--textFontColor);
 }

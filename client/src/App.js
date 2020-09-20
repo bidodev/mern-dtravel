@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './app.scss';
-
 
 /**
  * Firebase
@@ -26,11 +25,13 @@ import Spinner from './components/spinner/spinner.component';
 import Aside from './components/aside/aside.component';
 
 /** Pages */
-import Main from './pages/main/main';
-import Authentication from './pages/authentication/authentication';
-import Favorites from './pages/favorites/favorites';
-import Offers from './pages/offers/offers';
-import Quiz from './pages/quiz/quiz';
+const Favorites = lazy(() => import('./pages/favorites/favorites'));
+const Offers = lazy(() => import('./pages/offers/offers'));
+const Quiz = lazy(() => import('./pages/quiz/quiz'));
+const Main = lazy(() => import('./pages/main/main'));
+const Authentication = lazy(() =>
+  import('./pages/authentication/authentication')
+);
 
 const App = () => {
   const themeValue = useSelector(({ userConfig }) => userConfig.darkMode);
@@ -44,11 +45,18 @@ const App = () => {
 
   //2. Similar to componentDidMount when using class components.
   useEffect(() => {
+    /**
+     * define the userPreviousConfigurations
+     */
     const className = 'dark-mode';
     const classList = document.body.classList;
-    
+
     themeValue ? classList.add(className) : classList.remove(className);
-    
+
+    /**
+     * Update our redux state with our backgrounds
+     * */
+
     axios
       .get('/api/v1/data/backgrounds')
       .then((res) => {
@@ -100,25 +108,31 @@ const App = () => {
       ) : (
         <React.Fragment>
           <Switch>
-            <Route exact path="/" component={Main} />
-            <Route exact path="/quiz" component={Quiz} />
-            <Route
-              exact
-              path={['/places', '/experiences', '/housings']}
-              component={Offers}
-            />
-            <Route
-              exact
-              path="/login"
-              render={() =>
-                currentUser ? <Redirect to="/" /> : <Authentication />
-              }
-            />
-            <Route
-              exact
-              path="/favorites"
-              render={() => (currentUser ? <Favorites /> : <Authentication />)}
-            />
+            <Suspense fallback={<Spinner />}>
+              <Route exact path="/" component={Main} />
+              <Route exact path="/quiz" component={Quiz} />
+              <Route
+                exact
+                path={['/places', '/experiences', '/housings']}
+                component={Offers}
+              />
+
+              <Route
+                exact
+                path="/login"
+                render={() =>
+                  currentUser ? <Redirect to="/" /> : <Authentication />
+                }
+              />
+
+              <Route
+                exact
+                path="/favorites"
+                render={() =>
+                  currentUser ? <Favorites /> : <Authentication />
+                }
+              />
+            </Suspense>
           </Switch>
           <Aside />
         </React.Fragment>
