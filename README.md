@@ -22,17 +22,6 @@ The reason I built it was to practice building web applications from scratch and
 <img title="MongoDB" src="https://www.clouda.ca/wp-content/uploads/2013/03/mongodb-logo.png" width="100" />
 <img title="Node.js 12" src="https://ih1.redbubble.net/image.109336634.1604/flat,550x550,075,f.u1.jpg" width="100" />
 
-## Features
-- 
--
-
-
-To Do:
--
--
-
-## Design
-
 
 # Dtravel REST API
 
